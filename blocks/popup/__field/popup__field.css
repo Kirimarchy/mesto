@@ -1,0 +1,12 @@
+.popup__field {
+  max-width: 358px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 530px) {
+  .popup__field{
+    max-width: 238px;
+  }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Россия</title>
+    <link rel="stylesheet" href="pages/index.css" />
+  </head>
+  <body class="page">
+   <header class="header">
+      <img src="./images/Vector.png" class="header__logo" alt="Логотип" />
+      <div class="header__line"></div>
+    </header>
+    <main class="content">
+      <section class="profile">
+        <form class="profile__block">
+          <img src="./images/image.jpg" class="profile__avatar" />
+          <div class="profile__info">
+            <div class="profile__change">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <a href="" class="profile__edit-button" onclick="event.preventDefault()"></a>
+          </div>
+            <p class="profile__subtitle">Исследователь океана</p>
+          </div>
+        </form>
+        <a href="" class="profile__add-button"></a>
+      </section>
+       <section class="elements">
+        <article class="element">
+          <img
+            class="element__image"
+            src="./images/karachaevsk.jpg"
+            alt="Карачаевск"
+          />
+          <div class="element__text">
+            <h2 class="element__title">Карачаево-Черкессия</h2>
+            <img src="./images/Vector.svg" class="element__like" />
+          </div>
+        </article>
+        <article class="element">
+          <img
+            class="element__image"
+            src="./images/BigWood.jpg"
+            alt="Гора Эльбрус"
+          />
+          <div class="element__text">
+            <h2 class="element__title">Гора Эльбрус</h2>
+            <img src="./images/Vector.svg" class="element__like" />
+          </div>
+        </article>
+        <article class="element">
+          <img class="element__image" src="./images/Dombay.jpg" alt="Домбай" />
+          <div class="element__text">
+            <h2 class="element__title">Домбай</h2>
+            <img src="./images/Vector.svg" class="element__like" />
+          </div>
+        </article>
+        <article class="element">
+          <img
+            class="element__image"
+            src="./images/tundra-park.jpg"
+            alt="Тундра парк"
+          />
+          <div class="element__text">
+            <h2 class="element__title">Тундра парк</h2>
+            <img src="./images/Vector.svg" class="element__like" />
+          </div>
+        </article>
+        <article class="element">
+          <img
+            class="element__image"
+            src="./images/Teriberka.jpg"
+            alt="Териберка"
+          />
+          <div class="element__text">
+            <h2 class="element__title">Териберка</h2>
+            <img src="./images/Vector.svg" class="element__like" />
+          </div>
+        </article>
+        <article class="element">
+          <img class="element__image" src="./images/baikal.jpg" alt="Байкал" />
+          <div class="element__text">
+            <h2 class="element__title">Байкал</h2>
+            <img src="./images/Vector.svg" class="element__like" />
+          </div>
+        </article>
+      </section>
+      <section class="popup">
+        <div class="popup__cover"></div>
+        <div class="popup__container">
+          <a href = "" class="popup__close-btn" ></a>
+          <div class="popup__field">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input class="popup__name" type="text" />
+          <input class="popup__work" type="text" />
+          <a href="" class="popup__submit"></a>
+        </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

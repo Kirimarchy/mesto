@@ -1,0 +1,7 @@
+.popup__name {
+  color: #000000;
+  border: 0;
+  border-bottom: 1px solid 	#d3d3d3;
+  background-color: rgba(0, 0, 0, 0);
+  margin-bottom: 30px;
+}
