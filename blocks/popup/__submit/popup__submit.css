@@ -2,8 +2,6 @@
   padding: 0;
   border: none;
   font: inherit;
-  color: inherit;
-  background-color: transparent;
   cursor: pointer;
   text-decoration: none;
   width: 358px;
@@ -11,7 +9,6 @@
   background-color: #000000;
   justify-content: center;
   align-items: center;
-  text-align: center;
   display: flex;
   margin-top: 48px;
   font-weight: 400;
