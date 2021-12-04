@@ -1,5 +1,12 @@
 .popup__close-btn {
-  background: url("./../../../images/Close Icon.svg");
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  background: url("./../../../images/closeicon.svg");
   width: 32px;
   height: 32px;
   position: absolute;
@@ -7,9 +14,15 @@
   right: -40px;
 }
 
+.popup__close-btn:hover {
+  background: url("./../../../images/closehover.svg");
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+
 @media (max-width: 475px) {
   .popup__close-btn {
-    background: url("./../../../images/Close Icon s.svg");
+    background: url("./../../../images/closeiconxs.svg");
     width: 20px;
     height: 20px;
     right: 0;

@@ -1,13 +1,37 @@
 .popup__submit {
-  background: url("./../../../images/Submit Button.PNG");
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  text-decoration: none;
   width: 358px;
   height: 50px;
+  background-color: #000000;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
   margin-top: 48px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #fff;
 }
 
 @media (max-width: 530px) {
   .popup__submit {
-    background: url("./../../../images/Submit Button s.PNG");
-    max-width: 238px;
+    width: 238px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 17px;
   }
+}
+
+.popup__submit:hover {
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
 }

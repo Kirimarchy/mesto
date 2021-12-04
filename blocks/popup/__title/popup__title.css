@@ -8,10 +8,9 @@
 }
 
 @media (max-width: 530px) {
-  
-.popup__title {
-font-size: 18px;
-line-height: 22px;
-margin-bottom: 75px;
-}
+  .popup__title {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 75px;
+  }
 }

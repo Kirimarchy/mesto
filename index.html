@@ -8,22 +8,21 @@
   </head>
   <body class="page">
    <header class="header">
-      <img src="./images/Vector.png" class="header__logo" alt="Логотип" />
-      <div class="header__line"></div>
+      <img src="./images/logo.svg" class="header__logo" alt="логотип" />
     </header>
     <main class="content">
       <section class="profile">
-        <form class="profile__block">
+        <div class="profile__block">
           <img src="./images/image.jpg" class="profile__avatar" alt = "аватарка"/>
           <div class="profile__info">
             <div class="profile__change">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <a href="" class="profile__edit-button" onclick="event.preventDefault()"></a>
+            <button class="profile__edit-button"  type="button" ></button>
           </div>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
-        </form>
-        <a href="" class="profile__add-button"></a>
+        </div>
+        <button class="profile__add-button" type="button" ></button>
       </section>
        <section class="elements">
         <article class="element">
@@ -34,25 +33,25 @@
           />
           <div class="element__text">
             <h2 class="element__title">Карачаевск</h2>
-            <a href="" class="element__like"></a>
+            <button class="element__like" type= "button"></button>
           </div>
         </article>
         <article class="element">
           <img
             class="element__image"
-            src="./images/BigWood.jpg"
+            src="./images/bigwood.jpg"
             alt="Гора Эльбрус"
           />
           <div class="element__text">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <a href="" class="element__like"></a>
+            <button class="element__like" type= "button"></button>
           </div>
         </article>
         <article class="element">
-          <img class="element__image" src="./images/Dombay.jpg" alt="Домбай" />
+          <img class="element__image" src="./images/dombay.jpg" alt="Домбай" />
           <div class="element__text">
             <h2 class="element__title">Домбай</h2>
-            <a href="" class="element__like"></a>
+            <button class="element__like" type= "button"></button>
           </div>
         </article>
         <article class="element">
@@ -63,7 +62,7 @@
           />
           <div class="element__text">
             <h2 class="element__title">Тундра парк</h2>
-            <a href="" class="element__like"></a>
+            <button class="element__like" type= "button"></button>
           </div>
         </article>
         <article class="element">
@@ -74,33 +73,32 @@
           />
           <div class="element__text">
             <h2 class="element__title">Териберка</h2>
-            <a href="" class="element__like"></a>
+            <button class="element__like" type= "button"></button>
           </div>
         </article>
         <article class="element">
           <img class="element__image" src="./images/baikal.jpg" alt="Байкал" />
           <div class="element__text">
             <h2 class="element__title">Байкал</h2>
-            <a href="" class="element__like"></a>
+            <button class="element__like" type= "button"></button>
           </div>
         </article>
-      </section>
-      <section class="popup">
-        <div class="popup__cover"></div>
-        <div class="popup__container">
-          <a href = "" class="popup__close-btn" ></a>
-          <div class="popup__field">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input class="popup__name" type="text" />
-          <input class="popup__work" type="text" />
-          <a href="" class="popup__submit"></a>
-        </div>
-        </div>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
-    <script src="script.js"></script>
+    <div class="popup">
+      <div class="popup__container">
+        <button class="popup__close-btn" type="button" ></button>
+        <form name ="subscribeFormclass" class="popup__field">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input type="text" name="userName" class="popup__input-name" required placeholder="Ваше имя"/>
+        <input type="text" name="userJob" class="popup__input-work" required placeholder="Ваша профессия"/>
+        <button class="popup__submit" type="submit"  value="submit" >Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>
