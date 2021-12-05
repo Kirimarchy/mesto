@@ -6,7 +6,7 @@
 }
 
 @media (max-width: 530px) {
-  .popup__field{
+  .popup__field {
     max-width: 238px;
   }
 }

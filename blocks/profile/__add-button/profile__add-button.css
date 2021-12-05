@@ -12,7 +12,7 @@
 }
 
 .profile__add-button:hover {
-  background: url("./../../../images/addhover.svg");
+  opacity: 0.6;
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
@@ -22,12 +22,5 @@
     margin: 36px 0;
     background: url("./../../../images/addbuttons.svg");
     width: 282px;
-  }
-}
-@media (max-width: 530px) {
-  .profile__add-button:hover {
-    background: url("./../../../images/addbuttons.svg");
-    cursor: pointer;
-    transition: all 0.5s ease-out;
   }
 }
