@@ -17,6 +17,6 @@ Cервисо Mesto: интерактивная страница, куда мо�
 6.BEM Nested.
 
 **Ссылка на проект**
-* [Ссылка на проект в GitHub Pages](https://github.com/Kirimarchy/mesto.git)
+* [Ссылка на проект в GitHub Pages](https://kirimarchy.github.io/mesto/)
 
 
