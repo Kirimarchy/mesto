@@ -18,6 +18,7 @@
 
 @media (max-width: 620px) {
   .elements {
+    max-width: 490px;
     grid-gap: 10px;
   }
 }

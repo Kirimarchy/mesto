@@ -1,20 +1,20 @@
-let anchor = document.querySelector(".profile__edit-button");
-let element = document.querySelector(".popup");
-let form = document.querySelector(".popup__field"); // Воспользуйтесь методом querySelector()
-let closeBtn = document.querySelector(".popup__close-btn");
-let profileName = document.querySelector(".profile__title");
-let nameInput = document.querySelector(".popup__input-name"); // Находим поля формы в DOM
-let profession = document.querySelector(".profile__subtitle");
-let jobInput = document.querySelector(".popup__input-work");
+let anchor = document.querySelector('.profile__edit-button');
+let element = document.querySelector('.popup');
+let form = document.querySelector('.popup__field'); // Воспользуйтесь методом querySelector()
+let closeBtn = document.querySelector('.popup__close-btn');
+let profileName = document.querySelector('.profile__title');
+let nameInput = document.querySelector('.popup__input_type_name'); // Находим поля формы в DOM
+let profession = document.querySelector('.profile__subtitle');
+let jobInput = document.querySelector('.popup__input_type_work');
 
 function openPopup() {
-  element.classList.add("popup_opened");
+  element.classList.add('popup_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profession.textContent;
 }
 
 function closePopup() {
-  element.classList.remove("popup_opened");
+  element.classList.remove('popup_opened');
 }
 
 // Обработчик «отправки» формы, хотя пока
@@ -28,6 +28,6 @@ function formSubmitHandler(evt) {
   closePopup();
 }
 
-anchor.addEventListener("click", openPopup);
-closeBtn.addEventListener("click", formSubmitHandler);
-form.addEventListener("submit", formSubmitHandler);
+anchor.addEventListener('click', openPopup);
+closeBtn.addEventListener('click', formSubmitHandler);
+form.addEventListener('submit', formSubmitHandler);
