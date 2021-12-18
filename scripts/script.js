@@ -1,8 +1,9 @@
 const anchor = document.querySelector('.profile__edit-button');
-const add = document.querySelector('.profile__add-button');
+const addButton = document.querySelector('.profile__add-button');
 const element = document.querySelector('.popup');
 const mesto = document.querySelector('.popup_mesto');
 const form = document.querySelector('.popup__field'); // Воспользуйтесь методом querySelector()
+const closeMesto = document.querySelector('.popup__close-btn_mesto');
 const closeBtn = document.querySelector('.popup__close-btn');
 const profileName = document.querySelector('.profile__title');
 const nameInput = document.querySelector('.popup__input_type_name'); // Находим поля формы в DOM
@@ -11,7 +12,7 @@ const jobInput = document.querySelector('.popup__input_type_work');
 const formMesto = document.querySelector('.popup__field_mesto');
 const imageName = document.querySelector('.popup__input_image_name');
 const imageSrc = document.querySelector('.popup__input_image_src');
-const elementTemplate = document.querySelector('.element').content;
+const elementTemplate = document.querySelector('.element__template').content;
 const elementList = document.querySelector('.elements');
 const elementText = document.querySelector('.element__text');
 const elementTitle = document.querySelector('.element__title');
@@ -65,6 +66,7 @@ function openMesto() {
 
 function closePopup() {
   element.classList.remove('popup_opened');
+  mesto.classList.remove('popup_opened');
 }
 
 // Обработчик «отправки» формы, хотя пока
@@ -79,6 +81,7 @@ function formSubmitHandler(evt) {
 }
 
 anchor.addEventListener('click', openPopup);
-add.addEventListener('click', openMesto);
+addButton.addEventListener('click', openMesto);
 closeBtn.addEventListener('click', formSubmitHandler);
+closeMesto.addEventListener('click', closePopup);
 form.addEventListener('submit', formSubmitHandler);
