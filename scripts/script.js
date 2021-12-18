@@ -1,18 +1,22 @@
-let anchor = document.querySelector('.profile__edit-button');
-let element = document.querySelector('.popup');
-let form = document.querySelector('.popup__field'); // Воспользуйтесь методом querySelector()
-let closeBtn = document.querySelector('.popup__close-btn');
-let profileName = document.querySelector('.profile__title');
-let nameInput = document.querySelector('.popup__input_type_name'); // Находим поля формы в DOM
-let profession = document.querySelector('.profile__subtitle');
-let jobInput = document.querySelector('.popup__input_type_work');
+const anchor = document.querySelector('.profile__edit-button');
+const add = document.querySelector('.profile__add-button');
+const element = document.querySelector('.popup');
+const mesto = document.querySelector('.popup_mesto');
+const form = document.querySelector('.popup__field'); // Воспользуйтесь методом querySelector()
+const closeBtn = document.querySelector('.popup__close-btn');
+const profileName = document.querySelector('.profile__title');
+const nameInput = document.querySelector('.popup__input_type_name'); // Находим поля формы в DOM
+const profession = document.querySelector('.profile__subtitle');
+const jobInput = document.querySelector('.popup__input_type_work');
 const formMesto = document.querySelector('.popup__field_mesto');
 const imageName = document.querySelector('.popup__input_image_name');
 const imageSrc = document.querySelector('.popup__input_image_src');
 const elementTemplate = document.querySelector('.element').content;
 const elementList = document.querySelector('.elements');
 const elementText = document.querySelector('.element__text');
+const elementTitle = document.querySelector('.element__title');
 const elementLike = document.querySelector('.element__like');
+const elementImage = document.querySelector('.element__image');
 
 const initialCards = [
   {
@@ -55,6 +59,10 @@ function openPopup() {
   jobInput.value = profession.textContent;
 }
 
+function openMesto() {
+  mesto.classList.add('popup_opened');
+}
+
 function closePopup() {
   element.classList.remove('popup_opened');
 }
@@ -71,5 +79,6 @@ function formSubmitHandler(evt) {
 }
 
 anchor.addEventListener('click', openPopup);
+add.addEventListener('click', openMesto);
 closeBtn.addEventListener('click', formSubmitHandler);
 form.addEventListener('submit', formSubmitHandler);
