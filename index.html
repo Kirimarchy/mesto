@@ -34,8 +34,9 @@
       </section>
       <section class="elements">
         <template class="element__template">
-          <div class="element"> 
+          <div class="element">
             <img class="element__image" src="" alt=""/>
+            <button class="element__delete" type="button"></button>
             <div class="element__text">
                 <h2 class="element__title"></h2>
                 <button class="element__like" type="button"></button>
@@ -80,7 +81,7 @@
           <input type="text" name="imageName" class="popup__input popup__input_image_name"
             required placeholder="Название"
           />
-          <input type="image" name="imageSrc"  class="popup__input popup__input_image_src"
+          <input type="text" name="imageSrc"  class="popup__input popup__input_image_src"
             required placeholder="Ссылка на картинку"
           />
           <button class="popup__submit" type="submit" value="submit">

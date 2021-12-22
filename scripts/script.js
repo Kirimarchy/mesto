@@ -50,6 +50,7 @@ const initialCards = [
 initialCards.forEach(function (element) {
   const initialCardsElement = elementTemplate.cloneNode(true);
   initialCardsElement.querySelector('.element__image').src = element.link;
+  initialCardsElement.querySelector('.element__image').alt = element.name;
   initialCardsElement.querySelector('.element__title').textContent = element.name;
   elementList.append(initialCardsElement);
 })
@@ -59,7 +60,8 @@ function openPopup() {
   nameInput.value = profileName.textContent;
   jobInput.value = profession.textContent;
 }
-
+ 
+ const initialCardsElement = elementTemplate.cloneNode(true);
 
 function openMesto(e) {
   e.preventDefault();
@@ -83,11 +85,22 @@ function formSubmitHandler(evt) {
   closePopup();
 }
 
-function formMestoSubmit(evt) {
-evt.preventDefault();
-  elementTitle.textcontent = imageName.value;
-  elementImage.image = imageSrc.value;
-  closePopup();
+function formMestoSubmit(event) {
+   event.preventDefault();
+
+	if (event.type == 'click'){
+		closePopup();
+	}
+	else if (event.type == 'submit') {
+	  src = imageSrc.value;
+	  titleName = imageName.value;
+	  initialCardsElement.querySelector('.element__image').src = src;
+	  initialCardsElement.querySelector('.element__title').textContent = titleName;
+	  elementList.append(initialCardsElement);
+	  closePopup();
+    imageSrc.value = '';
+    imageName.value = '';
+	}
 }
 
 
