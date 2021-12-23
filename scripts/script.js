@@ -2,8 +2,8 @@ const anchor = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const element = document.querySelector('.popup');
 const mesto = document.querySelector('.popup_mesto');
-const form = document.querySelector('.popup__field');                 
-const closeMesto = document.querySelector('.popup__close-btn_mesto'); 
+const form = document.querySelector('.popup__field');                 // Воспользуйтесь методом querySelector()
+const closeMesto = document.querySelector('.popup__close-btn_mesto'); // Находим поля формы в DOM
 const closeBtn = document.querySelector('.popup__close-btn');
 const profileName = document.querySelector('.profile__title');
 const nameInput = document.querySelector('.popup__input_type_name'); 
@@ -16,9 +16,8 @@ const elementTemplate = document.querySelector('.element__template').content;
 const elementList = document.querySelector('.elements');
 const elementText = document.querySelector('.element__text');
 const elementTitle = document.querySelector('.element__title');
+const elementLike = document.querySelector('.element__like');
 const elementImage = document.querySelector('.element__image');
-const trashButton = document.querySelector('.element__delete');
-
 
 
 const initialCards = [
@@ -51,22 +50,19 @@ const initialCards = [
 initialCards.forEach(function (element) {
   const initialCardsElement = elementTemplate.cloneNode(true);
   initialCardsElement.querySelector('.element__image').src = element.link;
-  initialCardsElement.querySelector('.element__image').alt = element.name;
   initialCardsElement.querySelector('.element__title').textContent = element.name;
-  elementList.append(initialCardsElement);
-  });
-
-  const elementLike = document.querySelector('.element__like_active');
-  for (let a = 0; a < elementLike.length; a++) {
-    like[a].addEventListener('click', function (evt) {
-      like[a].classList.toggle('element__like_active');
+     elementLike.querySelector('.element__like').addEventListener('click', function (evt) {// лайк карточке
+       evt.target.classList.toggle('element__like_active');
     });
-  }
 
-  function deleteElement(evt) {
-    evt.preventDefault();
-    e.currentTarget.closest('element').remove();
-  }
+const trashButton = initialCardsElement.querySelector('.element__delete'); //удаление карточки кликом на корзинку
+trashButton.addEventListener('click', e => {
+e.currentTarget.closest('.element').remove()
+return initialCardsElement;
+});
+
+  elementList.append(initialCardsElement);
+})
 
 function openPopup() {
   element.classList.add('popup_opened');
@@ -74,7 +70,7 @@ function openPopup() {
   jobInput.value = profession.textContent;
 }
  
-const initialCardsElement = elementTemplate.cloneNode(true);
+ const initialCardsElement = elementTemplate.cloneNode(true);
 
 function openMesto(e) {
   e.preventDefault();
@@ -87,21 +83,24 @@ function closePopup() {
   mesto.classList.remove('popup_opened');
 }
 
+// Обработчик «отправки» формы, хотя пока
+// она никуда отправляться не будет
 function formSubmitHandler(evt) {
-  evt.preventDefault();                       
+  evt.preventDefault();                        // Эта строчка отменяет стандартную отправку формы.
 
-  profileName.textContent = nameInput.value; 
-  profession.textContent = jobInput.value; 
+  profileName.textContent = nameInput.value; // Получите значение полей jobInput и nameInput из свойства value
+  profession.textContent = jobInput.value;  // Вставьте новые значения с помощью textContent
+                                         // Выберите элементы, куда должны быть вставлены значения полей
   closePopup();
 }
 
-function addElement(event) {
+function formMestoSubmit(event) {
    event.preventDefault();
 
 	if (event.type == 'click'){
 		closePopup();
 	}
-	else if (event.type == 'submit') {
+	else if (event.type == 'submit'){
 	  src = imageSrc.value;
 	  titleName = imageName.value;
 	  initialCardsElement.querySelector('.element__image').src = src;
@@ -111,10 +110,10 @@ function addElement(event) {
 	}
 }
 
+
 anchor.addEventListener('click', openPopup);
 addButton.addEventListener('click', openMesto);
 closeBtn.addEventListener('click', formSubmitHandler);
-closeMesto.addEventListener('click', addElement);
+closeMesto.addEventListener('click', formMestoSubmit);
 form.addEventListener('submit', formSubmitHandler);
-trashButton.addEventListener('click', deleteElement);
-
+formMesto.addEventListener ('submit', formMestoSubmit);
