@@ -2,8 +2,8 @@ const anchor = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const element = document.querySelector('.popup');
 const mesto = document.querySelector('.popup_mesto');
-const form = document.querySelector('.popup__field');                 // Воспользуйтесь методом querySelector()
-const closeMesto = document.querySelector('.popup__close-btn_mesto'); // Находим поля формы в DOM
+const form = document.querySelector('.popup__field');                 
+const closeMesto = document.querySelector('.popup__close-btn_mesto'); 
 const closeBtn = document.querySelector('.popup__close-btn');
 const profileName = document.querySelector('.profile__title');
 const nameInput = document.querySelector('.popup__input_type_name'); 
@@ -16,8 +16,9 @@ const elementTemplate = document.querySelector('.element__template').content;
 const elementList = document.querySelector('.elements');
 const elementText = document.querySelector('.element__text');
 const elementTitle = document.querySelector('.element__title');
-const elementLike = document.querySelector('.element__like');
 const elementImage = document.querySelector('.element__image');
+const trashButton = document.querySelector('.element__delete');
+
 
 
 const initialCards = [
@@ -53,7 +54,19 @@ initialCards.forEach(function (element) {
   initialCardsElement.querySelector('.element__image').alt = element.name;
   initialCardsElement.querySelector('.element__title').textContent = element.name;
   elementList.append(initialCardsElement);
-})
+  });
+
+  const elementLike = document.querySelector('.element__like_active');
+  for (let a = 0; a < elementLike.length; a++) {
+    like[a].addEventListener('click', function (evt) {
+      like[a].classList.toggle('element__like_active');
+    });
+  }
+
+  function deleteElement(evt) {
+    evt.preventDefault();
+    e.currentTarget.closest('element').remove();
+  }
 
 function openPopup() {
   element.classList.add('popup_opened');
@@ -61,7 +74,7 @@ function openPopup() {
   jobInput.value = profession.textContent;
 }
  
- const initialCardsElement = elementTemplate.cloneNode(true);
+const initialCardsElement = elementTemplate.cloneNode(true);
 
 function openMesto(e) {
   e.preventDefault();
@@ -74,18 +87,15 @@ function closePopup() {
   mesto.classList.remove('popup_opened');
 }
 
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
 function formSubmitHandler(evt) {
-  evt.preventDefault();                        // Эта строчка отменяет стандартную отправку формы.
+  evt.preventDefault();                       
 
-  profileName.textContent = nameInput.value; // Получите значение полей jobInput и nameInput из свойства value
-  profession.textContent = jobInput.value;  // Вставьте новые значения с помощью textContent
-                                         // Выберите элементы, куда должны быть вставлены значения полей
+  profileName.textContent = nameInput.value; 
+  profession.textContent = jobInput.value; 
   closePopup();
 }
 
-function formMestoSubmit(event) {
+function addElement(event) {
    event.preventDefault();
 
 	if (event.type == 'click'){
@@ -96,17 +106,15 @@ function formMestoSubmit(event) {
 	  titleName = imageName.value;
 	  initialCardsElement.querySelector('.element__image').src = src;
 	  initialCardsElement.querySelector('.element__title').textContent = titleName;
-	  elementList.append(initialCardsElement);
+	  elementList.prepend(initialCardsElement);
 	  closePopup();
-    imageSrc.value = '';
-    imageName.value = '';
 	}
 }
-
 
 anchor.addEventListener('click', openPopup);
 addButton.addEventListener('click', openMesto);
 closeBtn.addEventListener('click', formSubmitHandler);
-closeMesto.addEventListener('click', formMestoSubmit);
+closeMesto.addEventListener('click', addElement);
 form.addEventListener('submit', formSubmitHandler);
-formMesto.addEventListener ('submit', formMestoSubmit);
+trashButton.addEventListener('click', deleteElement);
+
