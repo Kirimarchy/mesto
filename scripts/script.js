@@ -16,8 +16,10 @@ const elementTemplate = document.querySelector('.element__template').content;
 const elementList = document.querySelector('.elements');
 const elementText = document.querySelector('.element__text');
 const elementTitle = document.querySelector('.element__title');
-const elementLike = document.querySelector('.element__like');
 const elementImage = document.querySelector('.element__image');
+const elementLike = document.querySelector('.element__like');
+
+
 
 
 const initialCards = [
@@ -51,18 +53,12 @@ initialCards.forEach(function (element) {
   const initialCardsElement = elementTemplate.cloneNode(true);
   initialCardsElement.querySelector('.element__image').src = element.link;
   initialCardsElement.querySelector('.element__title').textContent = element.name;
-     elementLike.querySelector('.element__like').addEventListener('click', function (evt) {// лайк карточке
-       evt.target.classList.toggle('element__like_active');
+  initialCardsElement.querySelector('.element__like').addEventListener('click', function (evt) {
+  evt.target.classList.toggle('element__like_active');
+  });
+  elementList.append(initialCardsElement);
     });
 
-const trashButton = initialCardsElement.querySelector('.element__delete'); //удаление карточки кликом на корзинку
-trashButton.addEventListener('click', e => {
-e.currentTarget.closest('.element').remove()
-return initialCardsElement;
-});
-
-  elementList.append(initialCardsElement);
-})
 
 function openPopup() {
   element.classList.add('popup_opened');
@@ -109,8 +105,6 @@ function formMestoSubmit(event) {
 	  closePopup();
 	}
 }
-
-
 anchor.addEventListener('click', openPopup);
 addButton.addEventListener('click', openMesto);
 closeBtn.addEventListener('click', formSubmitHandler);
