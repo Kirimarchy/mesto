@@ -18,9 +18,7 @@ const elementText = document.querySelector('.element__text');
 const elementTitle = document.querySelector('.element__title');
 const elementImage = document.querySelector('.element__image');
 const elementLike = document.querySelector('.element__like');
-
-
-
+const elementDelete = document.querySelector('.element__delete');
 
 const initialCards = [
   {
@@ -54,11 +52,14 @@ initialCards.forEach(function (element) {
   initialCardsElement.querySelector('.element__image').src = element.link;
   initialCardsElement.querySelector('.element__title').textContent = element.name;
   initialCardsElement.querySelector('.element__like').addEventListener('click', function (evt) {
-  evt.target.classList.toggle('element__like_active');
+     evt.target.classList.toggle('element__like_active');
   });
+ initialCardsElement.querySelector('.element__delete').addEventListener('click', e => {
+e.currentTarget.closest('.element').remove()
+return initialCardsElement;
+});
   elementList.append(initialCardsElement);
     });
-
 
 function openPopup() {
   element.classList.add('popup_opened');
