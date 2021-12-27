@@ -1,0 +1,5 @@
+.element__image_opened {
+    display: contents;
+    max-width: 75vw;
+    max-height: 75vh;
+  }

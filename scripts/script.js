@@ -63,11 +63,24 @@ return initialCardsElement;
 
 function openPopup() {
   element.classList.add('popup_opened');
+  elementImage.classList.add('element__image_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profession.textContent;
 }
  
  const initialCardsElement = elementTemplate.cloneNode(true);
+
+ const imageOpen = (e) => {
+   openPopup(elementImage);
+   src = e.target.src;
+   caption.textContent = e.target.alt;
+ }
+
+ const cards = document.querySelectorAll('.element__image');
+ cards.forEach(card => {
+ card.addEventListener('click', imageOpen);
+/*initialCardsElement.style.display = 'none';*/
+ })
 
 function openMesto(e) {
   e.preventDefault();
