@@ -17,6 +17,8 @@ const elementList = document.querySelector('.elements');
 const elementText = document.querySelector('.element__text');
 const elementTitle = document.querySelector('.element__title');
 const elementImage = document.querySelector('.element__image');
+const imagePopup = document.querySelector('.element__image_opened');
+const imageCaption = document.querySelector('.element__title_opened');
 const elementLike = document.querySelector('.element__like');
 const elementDelete = document.querySelector('.element__delete');
 
@@ -54,6 +56,7 @@ initialCards.forEach(function (element) {
   initialCardsElement.querySelector('.element__like').addEventListener('click', function (evt) {
      evt.target.classList.toggle('element__like_active');
   });
+  
  initialCardsElement.querySelector('.element__delete').addEventListener('click', e => {
 e.currentTarget.closest('.element').remove()
 return initialCardsElement;
@@ -61,25 +64,24 @@ return initialCardsElement;
   elementList.append(initialCardsElement);
     });
 
+
+ const initialCardsElement = elementTemplate.cloneNode(true);
+
 function openPopup() {
   element.classList.add('popup_opened');
-  elementImage.classList.add('element__image_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profession.textContent;
 }
  
- const initialCardsElement = elementTemplate.cloneNode(true);
-
  const imageOpen = (e) => {
    openPopup(elementImage);
-   src = e.target.src;
-   caption.textContent = e.target.alt;
+   imagePopup.src = e.target.src;
+   imageCaption.textContent = e.target.alt;
  }
 
  const cards = document.querySelectorAll('.element__image');
  cards.forEach(card => {
  card.addEventListener('click', imageOpen);
-/*initialCardsElement.style.display = 'none';*/
  })
 
 function openMesto(e) {
@@ -115,8 +117,18 @@ function formMestoSubmit(event) {
 	  titleName = imageName.value;
 	  initialCardsElement.querySelector('.element__image').src = src;
 	  initialCardsElement.querySelector('.element__title').textContent = titleName;
+	  initialCardsElement.querySelector('.element__like').addEventListener('click', function (evt) {
+	  evt.target.classList.toggle('element__like_active');
+	  });
+  
+	 initialCardsElement.querySelector('.element__delete').addEventListener('click', e => {
+	 e.currentTarget.closest('.element').remove()
+	return initialCardsElement;
+	});
 	  elementList.prepend(initialCardsElement);
 	  closePopup();
+	  imageSrc.value = ""
+	  imageName.value = ""
 	}
 }
 anchor.addEventListener('click', openPopup);
