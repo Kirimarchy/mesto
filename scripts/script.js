@@ -20,7 +20,6 @@ const elementText = document.querySelector('.element__text');
 const elementTitle = document.querySelector('.element__title');
 const elementImage = document.querySelector('.element__image');
 const imagePopup = document.querySelector('.element__image_opened');
-const imageCaption = document.querySelector('.element__title_opened');
 const elementLike = document.querySelector('.element__like');
 const elementDelete = document.querySelector('.element__delete');
 
@@ -77,12 +76,13 @@ function openPopup() {
 
 function openImage() {
   imageBig.classList.add('popup_opened');
+  elementTitle.value = 
 }
  
  const imageOpen = (e) => {
    openImage(elementImage);
    imagePopup.src = e.target.src;
-   imageCaption.textContent = e.target.alt;
+   /*imageCaption.textContent = e.target.alt;*/
  }
 
  const cards = document.querySelectorAll('.element__image');
