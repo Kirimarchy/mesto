@@ -99,6 +99,7 @@ function openMesto(e) {
 function closePopup() {
   element.classList.remove('popup_opened');
   mesto.classList.remove('popup_opened');
+  imageBig.classList.remove('popup_opened')
 }
 
 // Обработчик «отправки» формы, хотя пока
@@ -143,3 +144,4 @@ closeBtn.addEventListener('click', formSubmitHandler);
 closeMesto.addEventListener('click', formMestoSubmit);
 form.addEventListener('submit', formSubmitHandler);
 formMesto.addEventListener ('submit', formMestoSubmit);
+closeImage.addEventListener ('click', closePopup);
