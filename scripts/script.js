@@ -2,6 +2,7 @@ const anchor = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const element = document.querySelector('.popup');
 const mesto = document.querySelector('.popup_mesto');
+const imageBig = document.querySelector('.popup_image');
 const form = document.querySelector('.popup__field');                 // Воспользуйтесь методом querySelector()
 const closeMesto = document.querySelector('.popup__close-btn_mesto'); // Находим поля формы в DOM
 const closeBtn = document.querySelector('.popup__close-btn');
@@ -72,9 +73,13 @@ function openPopup() {
   nameInput.value = profileName.textContent;
   jobInput.value = profession.textContent;
 }
+
+function openImage() {
+  imageBig.classList.add('popup_opened');
+}
  
  const imageOpen = (e) => {
-   openPopup(elementImage);
+   openImage(elementImage);
    imagePopup.src = e.target.src;
    imageCaption.textContent = e.target.alt;
  }
