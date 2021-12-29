@@ -3,6 +3,7 @@ const addButton = document.querySelector('.profile__add-button');
 const element = document.querySelector('.popup');
 const mesto = document.querySelector('.popup_mesto');
 const imageBig = document.querySelector('.popup_image');
+const closeImage = document.querySelector('.popup__close-btn_image');
 const form = document.querySelector('.popup__field');                 // Воспользуйтесь методом querySelector()
 const closeMesto = document.querySelector('.popup__close-btn_mesto'); // Находим поля формы в DOM
 const closeBtn = document.querySelector('.popup__close-btn');
