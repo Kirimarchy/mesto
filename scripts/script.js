@@ -76,13 +76,13 @@ function openPopup() {
 
 function openImage() {
   imageBig.classList.add('popup_opened');
-  elementTitle.value = 
 }
  
  const imageOpen = (e) => {
    openImage(elementImage);
    imagePopup.src = e.target.src;
-   /*imageCaption.textContent = e.target.alt;*/
+   titleName = imageName.value;
+   initialCardsElement.querySelector('.element__title').textContent = titleName;
  }
 
  const cards = document.querySelectorAll('.element__image');
