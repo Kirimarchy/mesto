@@ -20,40 +20,48 @@ const elementText = document.querySelector('.element__text');
 const elementTitle = document.querySelector('.element__title');
 const elementImage = document.querySelector('.element__image');
 const imagePopup = document.querySelector('.element__image_opened');
+const imageTitle = document.querySelector('.element__title_opened');
 const elementLike = document.querySelector('.element__like');
 const elementDelete = document.querySelector('.element__delete');
 
 const initialCards = [
   {
     name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+    alt: 'name'
   },
   {
     name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+    alt: 'name'
   },
   {
     name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+    alt: 'name'
   },
   {
     name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+    alt: 'name'
   },
   {
     name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+    alt: 'name'
   },
   {
     name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+    alt: 'name'
   }
 ];
 
 initialCards.forEach(function (element) {
   const initialCardsElement = elementTemplate.cloneNode(true);
-  initialCardsElement.querySelector('.element__image').src = element.link;
   initialCardsElement.querySelector('.element__title').textContent = element.name;
+  initialCardsElement.querySelector('.element__image').alt = element.name;
+  initialCardsElement.querySelector('.element__image').src = element.link;
   initialCardsElement.querySelector('.element__like').addEventListener('click', function (evt) {
      evt.target.classList.toggle('element__like_active');
   });
@@ -81,8 +89,7 @@ function openImage() {
  const imageOpen = (e) => {
    openImage(elementImage);
    imagePopup.src = e.target.src;
-   titleName = imageName.value;
-   initialCardsElement.querySelector('.element__title').textContent = titleName;
+   imageTitle.textcontent = e.target.alt;
  }
 
  const cards = document.querySelectorAll('.element__image');
