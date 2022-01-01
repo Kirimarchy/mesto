@@ -89,7 +89,8 @@ function openImage() {
  const imageOpen = (e) => {
    openImage(elementImage);
    imagePopup.src = e.target.src;
-   imageTitle.textcontent = e.target.alt; //переменная, в которой заданы свойства для надписи картинки при открытии
+   imageTitle.textcontent = e.target.textContent; //переменная, в которой заданы свойства для надписи картинки при открытии 
+   console.log(imageTitle)
  }
 
  const cards = document.querySelectorAll('.element__image');

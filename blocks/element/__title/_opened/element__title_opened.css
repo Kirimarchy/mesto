@@ -1,7 +1,9 @@
 .element__title_opened {
+  margin: 0;
   font-weight: normal;
   font-size: 12px;
   line-height: 15px;
   color: #ffffff;
+  margin-top: 10px;
 }
 
