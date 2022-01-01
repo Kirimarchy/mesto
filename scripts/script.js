@@ -28,7 +28,7 @@ const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-    alt: 'name'
+    alt: 'name'  // в alt должно передаваться название из name, то есть alt =  name
   },
   {
     name: 'Челябинская область',
@@ -89,7 +89,7 @@ function openImage() {
  const imageOpen = (e) => {
    openImage(elementImage);
    imagePopup.src = e.target.src;
-   imageTitle.textcontent = e.target.alt;
+   imageTitle.textcontent = e.target.alt; //переменная, в которой заданы свойства для надписи картинки при открытии
  }
 
  const cards = document.querySelectorAll('.element__image');
