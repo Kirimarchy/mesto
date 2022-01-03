@@ -20,7 +20,7 @@ const elementText = document.querySelector('.element__text');
 const elementTitle = document.querySelector('.element__title');
 const elementImage = document.querySelector('.element__image');
 const imagePopup = document.querySelector('.element__image_opened');
-const imageTitle = document.querySelector('.element__title_opened');
+const imageTitle = document.querySelector('.popup__title_opened');
 const elementLike = document.querySelector('.element__like');
 const elementDelete = document.querySelector('.element__delete');
 
