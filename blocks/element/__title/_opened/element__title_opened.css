@@ -1,4 +1,5 @@
 .element__title_opened {
+  padding: 0;
   margin: 0;
   font-weight: normal;
   font-size: 12px;
@@ -7,4 +8,3 @@
   margin-top: 10px;
   position: absolute;
 }
-
