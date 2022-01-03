@@ -73,7 +73,7 @@ return initialCardsElement;
   elementList.append(initialCardsElement);
     });
 
-
+ addEventToImage();
  const initialCardsElement = elementTemplate.cloneNode(true);
 
 function openPopup() {
@@ -86,18 +86,18 @@ function openImage() {
   imageBig.classList.add('popup_opened');
 }
  
- const imageOpen = (e) => {
-   openImage(elementImage);
-   imagePopup.src = e.target.src;
-   imageTitle.textContent = e.target.alt;
-   console.log(imageTitle.textContent);
-   console.log(imagePopup.src)
+function addEventToImage(){
+  const imageOpen = (e) => {
+    openImage(elementImage);
+    imagePopup.src = e.target.src;
+    imageTitle.textContent = e.target.alt; 
+  }
+ 
+  const cards = document.querySelectorAll('.element__image');
+  cards.forEach(card => {
+  card.addEventListener('click', imageOpen);
+  }) 
  }
-
- const cards = document.querySelectorAll('.element__image');
- cards.forEach(card => {
- card.addEventListener('click', imageOpen);
- })
 
 function openMesto(e) {
   e.preventDefault();
@@ -114,11 +114,10 @@ function closePopup() {
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandler(evt) {
-  evt.preventDefault();                        // Эта строчка отменяет стандартную отправку формы.
-
+  evt.preventDefault();                       // Эта строчка отменяет стандартную отправку формы.
   profileName.textContent = nameInput.value; // Получите значение полей jobInput и nameInput из свойства value
   profession.textContent = jobInput.value;  // Вставьте новые значения с помощью textContent
-                                         // Выберите элементы, куда должны быть вставлены значения полей
+                                           // Выберите элементы, куда должны быть вставлены значения полей
   closePopup();
 }
 
@@ -129,12 +128,15 @@ function formMestoSubmit(event) {
 		closePopup();
 	}
 	else if (event.type == 'submit'){
+    const initialCardsElement = elementTemplate.cloneNode(true);
 	  src = imageSrc.value;
 	  titleName = imageName.value;
 	  initialCardsElement.querySelector('.element__image').src = src;
+    initialCardsElement.querySelector('.element__image').alt = titleName;
 	  initialCardsElement.querySelector('.element__title').textContent = titleName;
 	  initialCardsElement.querySelector('.element__like').addEventListener('click', function (evt) {
 	  evt.target.classList.toggle('element__like_active');
+    
 	  });
   
 	 initialCardsElement.querySelector('.element__delete').addEventListener('click', e => {
@@ -143,10 +145,12 @@ function formMestoSubmit(event) {
 	});
 	  elementList.prepend(initialCardsElement);
 	  closePopup();
-	  imageSrc.value = ""
-	  imageName.value = ""
+	  imageSrc.value = "";
+	  imageName.value = "";
+    addEventToImage();
 	}
 }
+
 anchor.addEventListener('click', openPopup);
 addButton.addEventListener('click', openMesto);
 closeBtn.addEventListener('click', formSubmitHandler);
