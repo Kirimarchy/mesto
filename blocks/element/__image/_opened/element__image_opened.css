@@ -2,4 +2,6 @@
   display: flex;
   max-width: 75vw;
   max-height: 75vh;
+  background: #000000;
+  opacity: 0.9;
 }
