@@ -28,7 +28,7 @@ const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-    alt: 'name'  // в alt должно передаваться название из name, то есть alt =  name
+    alt: 'name' 
   },
   {
     name: 'Челябинская область',
