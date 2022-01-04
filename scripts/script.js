@@ -4,9 +4,9 @@ const profilePopup = document.querySelector('.popup_profile');
 const mesto = document.querySelector('.popup_mesto');
 const imageBig = document.querySelector('.popup_image');
 const closeImage = document.querySelector('.popup__close-btn_image');
-const form = document.querySelector('.popup__field');                 // Воспользуйтесь методом querySelector()
+const formProfile = document.querySelector('.popup__field_profile');                 // Воспользуйтесь методом querySelector()
 const closeMesto = document.querySelector('.popup__close-btn_mesto'); // Находим поля формы в DOM
-const closeBtn = document.querySelector('.popup__close-btn');
+const closeProfile = document.querySelector('.popup__close-btn_profile');
 const profileName = document.querySelector('.profile__title');
 const nameInput = document.querySelector('.popup__input_type_name'); 
 const profession = document.querySelector('.profile__subtitle');
@@ -152,8 +152,8 @@ function formMestoSubmit(event) {
 
 editProfileButton.addEventListener('click', openPopup);
 addButton.addEventListener('click', openMesto);
-closeBtn.addEventListener('click', formSubmitHandler);
+closeProfile.addEventListener('click', formSubmitHandler);
 closeMesto.addEventListener('click', formMestoSubmit);
-form.addEventListener('submit', formSubmitHandler);
+formProfile.addEventListener('submit', formSubmitHandler);
 formMesto.addEventListener ('submit', formMestoSubmit);
 closeImage.addEventListener ('click', closePopup);
