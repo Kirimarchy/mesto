@@ -58,8 +58,7 @@ const initialCards = [
 initialCards.forEach(function (element) {
   const initialCardsElement = createCard(element);
   elementList.append(initialCardsElement);
-  console.log (initialCardsElement);
-});
+})
 
   function createCard(card) {
     const initialCardsElement = elementTemplate.cloneNode(true);
@@ -69,11 +68,11 @@ initialCards.forEach(function (element) {
     initialCardsElement.querySelector('.element__like').addEventListener('click', function (e) {
        e.target.classList.toggle('element__like_active');
     });
-    
-  initialCardsElement.querySelector('.element__delete').addEventListener('click', e => {
-  e.currentTarget.closest('.element').remove()
-  return initialCardsElement;
-  });
+    initialCardsElement.querySelector('.element__delete').addEventListener('click', e => {
+    e.currentTarget.closest('.element').remove()
+    })
+    return initialCardsElement;
+}
 
   const imageOpen = (e) => {
   openPopup(imageBig);
@@ -135,24 +134,5 @@ formMesto.addEventListener('submit', function(e) {
     {name: imageName.value, 
     link: imageSrc.value}
     );
-
   elementList.prepend(initialCardsElement);
- 
-newElement.querySelector('.element__like').addEventListener('click', function (e) {
-    e.target.classList.toggle('element__like_active');
-
-    closePopup();
-    imageSrc.value = "";
-    imageName.value = "";
-})
-
-const cards = document.querySelectorAll('.element__image');
-cards.forEach(card => {
-card.addEventListener('click', imageOpen);
-})
-
-newElement.querySelector('.element__delete').addEventListener('click', e => {
-  e.currentTarget.closest('.element').remove()
-})
-
 })
