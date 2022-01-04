@@ -1,6 +1,6 @@
-const anchor = document.querySelector('.profile__edit-button');
+const editProfileButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
-const element = document.querySelector('.popup');
+const profilePopup = document.querySelector('.popup_profile');
 const mesto = document.querySelector('.popup_mesto');
 const imageBig = document.querySelector('.popup_image');
 const closeImage = document.querySelector('.popup__close-btn_image');
@@ -77,7 +77,7 @@ return initialCardsElement;
  const initialCardsElement = elementTemplate.cloneNode(true);
 
 function openPopup() {
-  element.classList.add('popup_opened');
+  profilePopup.classList.add('popup_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profession.textContent;
 }
@@ -106,7 +106,7 @@ function openMesto(e) {
 }
 
 function closePopup() {
-  element.classList.remove('popup_opened');
+  profilePopup.classList.remove('popup_opened');
   mesto.classList.remove('popup_opened');
   imageBig.classList.remove('popup_opened')
 }
@@ -136,7 +136,6 @@ function formMestoSubmit(event) {
 	  initialCardsElement.querySelector('.element__title').textContent = titleName;
 	  initialCardsElement.querySelector('.element__like').addEventListener('click', function (evt) {
 	  evt.target.classList.toggle('element__like_active');
-    
 	  });
   
 	 initialCardsElement.querySelector('.element__delete').addEventListener('click', e => {
@@ -151,7 +150,7 @@ function formMestoSubmit(event) {
 	}
 }
 
-anchor.addEventListener('click', openPopup);
+editProfileButton.addEventListener('click', openPopup);
 addButton.addEventListener('click', openMesto);
 closeBtn.addEventListener('click', formSubmitHandler);
 closeMesto.addEventListener('click', formMestoSubmit);
