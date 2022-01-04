@@ -1,4 +1,4 @@
-import {initialCards} from '../modules/module.js';
+import {initialCards} from '../array/cards.js';
 const editProfileBtn = document.querySelector('.profile__edit-button');
 const addMestoBtn = document.querySelector('.profile__add-button');
 const profilePopup = document.querySelector('.popup_profile');
@@ -17,11 +17,8 @@ const imageName = document.querySelector('.popup__input_image_name');
 const imageSrc = document.querySelector('.popup__input_image_src');
 const elementTemplate = document.querySelector('.element-template').content;
 const elementList = document.querySelector('.elements');
-const elementText = document.querySelector('.element__text');
-const elementTitle = document.querySelector('.element__title');
 const imagePopup = document.querySelector('.popup__image_opened');
 const imageTitle = document.querySelector('.popup__title_opened');
-
 
 initialCards.forEach(function (element) {
   const initialCardsElement = createCard(element);
