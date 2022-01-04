@@ -122,11 +122,10 @@ function submitProfileForm(e) {
   profileName.textContent = nameInput.value; // Получите значение полей jobInput и nameInput из свойства value
   profession.textContent = jobInput.value;  // Вставьте новые значения с помощью textContent
                                            // Выберите элементы, куда должны быть вставлены значения полей
-  closePopup();
+  closePopup(profilePopup);
 }
 
 formProfile.addEventListener('submit', submitProfileForm);
-
 
 formMesto.addEventListener('submit', function(e) {
   e.preventDefault();
@@ -135,4 +134,9 @@ formMesto.addEventListener('submit', function(e) {
     link: imageSrc.value}
     );
   elementList.prepend(initialCardsElement);
+  const cards = document.querySelectorAll('.element__image');
+  cards.forEach(card => {
+  card.addEventListener('click', imageOpen);
+}) 
+  closePopup(mesto);
 })
