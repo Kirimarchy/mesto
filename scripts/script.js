@@ -1,8 +1,8 @@
-import {initialCards} from '../array/cards.js';
+import { initialCards } from '../array/cards.js';
 const editProfileBtn = document.querySelector('.profile__edit-button');
 const addMestoBtn = document.querySelector('.profile__add-button');
 const profilePopup = document.querySelector('.popup_profile');
-const mesto = document.querySelector('.popup_mesto');
+const mestoPopup = document.querySelector('.popup_mesto');
 const imageBig = document.querySelector('.popup_image');
 const closeImageBtn = document.querySelector('.popup__close-btn_image');
 const formProfile = document.querySelector('.popup__field_profile');      // Воспользуйтесь методом querySelector()
@@ -19,36 +19,6 @@ const elementTemplate = document.querySelector('.element-template').content;
 const elementList = document.querySelector('.elements');
 const imagePopup = document.querySelector('.popup__image_opened');
 const imageTitle = document.querySelector('.popup__title_opened');
-
-initialCards.forEach(function (element) {
-  const initialCardsElement = createCard(element);
-  elementList.append(initialCardsElement);
-})
-
-function createCard(card) {
-  const initialCardsElement = elementTemplate.cloneNode(true);
-  initialCardsElement.querySelector('.element__title').textContent = card.name;
-  initialCardsElement.querySelector('.element__image').alt = card.name;
-  initialCardsElement.querySelector('.element__image').src = card.link;
-  initialCardsElement.querySelector('.element__like').addEventListener('click', function (e) {
-    e.target.classList.toggle('element__like_active');
-  });
-  initialCardsElement.querySelector('.element__delete').addEventListener('click', e => {
-    e.currentTarget.closest('.element').remove()
-  })
-  return initialCardsElement;
-}
-
-const imageOpen = (e) => {
-  openPopup(imageBig);
-  imagePopup.src = e.target.src;
-  imageTitle.textContent = e.target.alt;
-}
-
-const cards = document.querySelectorAll('.element__image');
-cards.forEach(card => {
-  card.addEventListener('click', imageOpen);
-})
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -69,16 +39,51 @@ closeProfile.addEventListener('click', (e) => {
 })
 
 addMestoBtn.addEventListener('click', (e) => {
-  openPopup(mesto);
+  openPopup(mestoPopup);
 })
 
 closeMestoBtn.addEventListener('click', (e) => {
-  closePopup(mesto);
+  closePopup(mestoPopup);
 })
 
 closeImageBtn.addEventListener('click', (e) => {
   closePopup(imageBig);
 })
+
+
+initialCards.forEach(function (element) {
+  const initialCardsElement = createCard(element);
+  elementList.append(initialCardsElement);
+})
+
+function createCard(card) {
+
+  const initialCardsElement = elementTemplate.cloneNode(true);
+  const cardName = initialCardsElement.querySelector('.element__title');
+  const cardAlt = initialCardsElement.querySelector('.element__image');
+  const cardLink = initialCardsElement.querySelector('.element__image');
+
+  cardName.textContent = card.name;
+  cardAlt.alt = card.name;
+  cardLink.src = card.link;
+
+  cardLink.addEventListener('click', () => {
+    imagePopup.src = cardLink.src;
+    imageTitle.textContent = cardName.textContent;
+    openPopup(imageBig);
+  })
+
+
+  initialCardsElement.querySelector('.element__like').addEventListener('click', function (e) {
+    e.target.classList.toggle('element__like_active');
+  });
+
+  initialCardsElement.querySelector('.element__delete').addEventListener('click', e => {
+    e.currentTarget.closest('.element').remove()
+  })
+  return initialCardsElement;
+}
+
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -101,9 +106,5 @@ formMesto.addEventListener('submit', function (e) {
     }
   );
   elementList.prepend(initialCardsElement);
-  const cards = document.querySelectorAll('.element__image');
-  cards.forEach(card => {
-    card.addEventListener('click', imageOpen);
-  })
-  closePopup(mesto);
+  closePopup(mestoPopup);
 })
