@@ -107,4 +107,6 @@ formMesto.addEventListener('submit', function (e) {
   );
   elementList.prepend(initialCardsElement);
   closePopup(mestoPopup);
+  imageName.value = '';
+  imageSrc.value = '';
 })
