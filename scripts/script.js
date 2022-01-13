@@ -1,29 +1,39 @@
 import { initialCards } from '../array/cards.js';
-const editFormModal = document.querySelector(".popup_profile");
-const addFormModal = document.querySelector(".popup_mesto");
-const imageFormModal = document.querySelector(".popup_image");
-const esc = "Escape";
-const editProfileBtn = document.querySelector('.profile__edit-button');
-const addMestoBtn = document.querySelector('.profile__add-button');
+
+//Popup
 const profilePopup = document.querySelector('.popup_profile');
 const mestoPopup = document.querySelector('.popup_mesto');
 const imageBig = document.querySelector('.popup_image');
+
+//Buttons
+
+const esc = "Escape";
+const editProfileBtn = document.querySelector('.profile__edit-button');
+const addMestoBtn = document.querySelector('.profile__add-button');
 const closeImageBtn = document.querySelector('.popup__close-btn_image');
-const formProfile = document.querySelector('.popup__form_profile');      // Воспользуйтесь методом querySelector()
-const closeMestoBtn = document.querySelector('.popup__close-btn_mesto'); // Находим поля формы в DOM
+const closeMestoBtn = document.querySelector('.popup__close-btn_mesto'); 
 const closeProfile = document.querySelector('.popup__close-btn_profile');
+
+//Form
+
+const formProfile = document.querySelector('.popup__form_profile');
+const formMesto = document.querySelector('.popup__form_mesto');    
+
+//Inputs
 const profileName = document.querySelector('.profile__title');
 const nameInput = document.querySelector('.popup__input_type_name');
 const profession = document.querySelector('.profile__subtitle');
 const jobInput = document.querySelector('.popup__input_type_work');
-const formMesto = document.querySelector('.popup__form_mesto');
 const imageName = document.querySelector('.popup__input_image_name');
 const imageSrc = document.querySelector('.popup__input_image_src');
+
+//Template
 const elementTemplate = document.querySelector('.element-template').content;
 const elementList = document.querySelector('.elements');
 const imagePopup = document.querySelector('.popup__image_opened');
 const imageTitle = document.querySelector('.popup__title_opened');
 
+//закрытие по оверлей
 const setEsclistener = function(evt) {
   if (evt.key === esc) {
     const openedPopup = document.querySelector('.popup_opened');
@@ -40,20 +50,20 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', setEsclistener);
 }
+profilePopup.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
+    closePopup(profilePopup);
+  }
+});
 
-editFormModal.addEventListener('click', (evt) => {
+mestoPopup.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closePopup(editFormModal);
+    closePopup(mestoPopup);
   }
 });
-addFormModal.addEventListener('click', (evt) => {
+imageBig.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closePopup(addFormModal);
-  }
-});
-imageFormModal.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closePopup(imageFormModal);
+    closePopup(imageBig);
   }
 });
 
@@ -141,7 +151,7 @@ formMesto.addEventListener('submit', function (e) {
   imageSrc.value = '';
 })
 
-/*
+
 const showInputError = (formElement, inputElement, { inputErrorClass }, errorMessage) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
   errorElement.textContent = errorMessage;
@@ -161,29 +171,6 @@ const checkInputValidity = (formElement, inputElement) => {
     hideInputError(formElement, inputElement);
   }
 };
-
-const setEventListeners = (formElement, arr) => {
-  const inputList = Array.from(formElement.querySelectorAll(arr.inputSelector));
-  const buttonElement = formElement.querySelector(arr.submitButtonSelector);
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement, arr);
-      // чтобы проверять его при изменении любого из полей
-      toggleButtonState(inputList, buttonElement, arr);
-    });
-  });
-}; 
-
-
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(arr.formSelector));
-  formList.forEach((formElement) => {
-    formElement.addEventListener('submit', function (evt) {
-      evt.preventDefault();
-    });
-  setEventListeners(formElement, arr);
-});
-
 
 // Функция принимает массив полей
 
@@ -211,16 +198,36 @@ function toggleButtonState (inputList, buttonElement, arr){
   }
 };
 
+const setEventListeners = (formElement, arr) => {
+  const inputList = Array.from(formElement.querySelectorAll(arr.inputSelector));
+  const buttonElement = formElement.querySelector(arr.submitButtonSelector);
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', function () {
+      checkInputValidity(formElement, inputElement, arr);
+      // чтобы проверять его при изменении любого из полей
+      toggleButtonState(inputList, buttonElement, arr);
+    });
+  });
+}; 
+
+
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll(arr.formSelector));
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+    });
+  setEventListeners(formElement, arr);
+});
+
 enableValidation()
-// Функция принимает массив полей ввода
-// и элемент кнопки, состояние которой нужно менять
+
 enableValidation ({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input__error',
+  inputErrorClass: 'popup__input_error',
   errorClass: 'popup__error_visible',
 })
 
-*/

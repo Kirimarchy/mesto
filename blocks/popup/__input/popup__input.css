@@ -19,11 +19,12 @@
   border-bottom: 1px solid red; /* красная рамка для некорректных данных */
 } 
 
-.popup__input_error_visible {
+.popup__input_error {
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
   }
+
   .popup_type_error {
 
   }
