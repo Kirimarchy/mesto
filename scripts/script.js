@@ -2,6 +2,7 @@ import { initialCards } from '../array/cards.js';
 const editFormModal = document.querySelector(".popup_profile");
 const addFormModal = document.querySelector(".popup_mesto");
 const imageFormModal = document.querySelector(".popup_image");
+const esc = "Escape";
 const editProfileBtn = document.querySelector('.profile__edit-button');
 const addMestoBtn = document.querySelector('.profile__add-button');
 const profilePopup = document.querySelector('.popup_profile');
@@ -42,17 +43,17 @@ function closePopup(popup) {
 
 editFormModal.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closeModalWindow(editFormModal);
+    closePopup(editFormModal);
   }
 });
 addFormModal.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closeModalWindow(addFormModal);
+    closePopup(addFormModal);
   }
 });
 imageFormModal.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closeModalWindow(imageFormModal);
+    closePopup(imageFormModal);
   }
 });
 
@@ -140,7 +141,7 @@ formMesto.addEventListener('submit', function (e) {
   imageSrc.value = '';
 })
 
-
+/*
 const showInputError = (formElement, inputElement, { inputErrorClass }, errorMessage) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
   errorElement.textContent = errorMessage;
@@ -222,4 +223,4 @@ enableValidation ({
   errorClass: 'popup__error_visible',
 })
 
-
+*/
