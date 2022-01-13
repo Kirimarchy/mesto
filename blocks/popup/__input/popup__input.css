@@ -15,16 +15,16 @@
   margin-bottom: 0;
 }
 
-.popup__input:invalid {
+.popup__input_type_error {
   border-bottom: 1px solid red; /* красная рамка для некорректных данных */
-} 
+}
 
-.popup__input_error {
+.popup_error_visible {
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-  }
-
-  .popup_type_error {
-
-  }
+  margin-top: 5px;
+  opacity: 1;
+  display: block;
+  color: #ff0000;
+}

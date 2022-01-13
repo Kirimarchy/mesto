@@ -38,7 +38,9 @@
 }
 
 .popup__button_disabled {
-  background-color:  #fff;
-  color:black;
-  cursor: default;
+    color: #000;
+    opacity: 0.2;
+    background-color: #fff;
+    pointer-events: none;
+    user-select: none;
 }

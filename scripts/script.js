@@ -152,15 +152,17 @@ formMesto.addEventListener('submit', function (e) {
 })
 
 
-const showInputError = (formElement, inputElement, { inputErrorClass }, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage) => {
+  inputElement.classList.add('popup__input_type_error');
   const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
   errorElement.textContent = errorMessage;
   inputElement.classList.add(inputErrorClass)
 }
 
-const hideInputError = (formElement, inputElement, { inputErrorClass }) => {
-  const errorElement = formElement.querySelector(`#${inputElement.id}Error`)
-  errorElement.textContent = ''
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
+  inputElement.classList.remove('popup__input_type_error');
+  errorElement.textContent = '';
   inputElement.classList.remove(inputErrorClass)
 }
 
@@ -185,39 +187,45 @@ const hasInvalidInput = (inputList) => {
   })
 };
 
-function toggleButtonState (inputList, buttonElement, arr){
+formElement.addEventListener("submit", function (evt) {
+  // Отменим стандартное поведение по сабмиту
+  evt.preventDefault();
+});
+
+// Вызовем toggleButtonState, чтобы не ждать ввода данных в поля
+
+function toggleButtonState (inputList, buttonElement){
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
     buttonElement.setAttribute('disabled', true);
-    buttonElement.classList.add(arr.inactiveButtonClass);
+    buttonElement.classList.add(inactiveButtonClass);
   } else {
     // иначе сделай кнопку активной
     buttonElement.removeAttribute('disabled', true);
-    buttonElement.classList.remove(arr.inactiveButtonClass);
+    buttonElement.classList.remove(inactiveButtonClass);
   }
 };
 
-const setEventListeners = (formElement, arr) => {
-  const inputList = Array.from(formElement.querySelectorAll(arr.inputSelector));
-  const buttonElement = formElement.querySelector(arr.submitButtonSelector);
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.popup__input');
+  const buttonElement = formElement.querySelector('.popup__button');
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement, arr);
+      checkInputValidity(formElement, inputElement);
       // чтобы проверять его при изменении любого из полей
-      toggleButtonState(inputList, buttonElement, arr);
+      toggleButtonState(inputList, buttonElement);
     });
   });
 }; 
 
-
 const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(arr.formSelector));
+  const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
-  setEventListeners(formElement, arr);
+  setEventListeners(formElement);
 });
 
 enableValidation()
@@ -227,7 +235,6 @@ enableValidation ({
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_error',
-  errorClass: 'popup__error_visible',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
 })
-
