@@ -198,35 +198,34 @@ function toggleButtonState (inputList, buttonElement){
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
-    buttonElement.setAttribute('disabled', true);
     buttonElement.classList.add(inactiveButtonClass);
   } else {
     // иначе сделай кнопку активной
-    buttonElement.removeAttribute('disabled', true);
     buttonElement.classList.remove(inactiveButtonClass);
   }
 };
 
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__input');
-  const buttonElement = formElement.querySelector('.popup__button');
+const setEventListeners = (config) => {
+  const inputList = Array.from(document.querySelectorAll(config.inputSelector));
+  const buttonElement = document.querySelector(config.submitButtonSelector);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement);
       // чтобы проверять его при изменении любого из полей
-      toggleButtonState(inputList, buttonElement);
+      toggleButtonState(inputList, buttonElement, inactiveButtonClass);
     });
   });
 }; 
 
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(formSelector));
-  formList.forEach((formElement) => {
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((config) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
-  setEventListeners(formElement);
+  setEventListeners(config);
 });
+};
 
 enableValidation()
 
@@ -236,5 +235,5 @@ enableValidation ({
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-})
+  errorClass: 'popup__error_visible',
+});
