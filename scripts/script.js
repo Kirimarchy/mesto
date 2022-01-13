@@ -1,4 +1,7 @@
 import { initialCards } from '../array/cards.js';
+const editFormModal = document.querySelector(".popup_profile");
+const addFormModal = document.querySelector(".popup_mesto");
+const imageFormModal = document.querySelector(".popup_image");
 const editProfileBtn = document.querySelector('.profile__edit-button');
 const addMestoBtn = document.querySelector('.profile__add-button');
 const profilePopup = document.querySelector('.popup_profile');
@@ -20,14 +23,38 @@ const elementList = document.querySelector('.elements');
 const imagePopup = document.querySelector('.popup__image_opened');
 const imageTitle = document.querySelector('.popup__title_opened');
 
-
+const setEsclistener = function(evt) {
+  if (evt.key === esc) {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+  };
+  
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', setEsclistener);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', setEsclistener);
 }
+
+editFormModal.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
+    closeModalWindow(editFormModal);
+  }
+});
+addFormModal.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
+    closeModalWindow(addFormModal);
+  }
+});
+imageFormModal.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
+    closeModalWindow(imageFormModal);
+  }
+});
 
 editProfileBtn.addEventListener('click', (e) => {
   nameInput.value = profileName.textContent;
@@ -50,6 +77,7 @@ closeMestoBtn.addEventListener('click', (e) => {
 closeImageBtn.addEventListener('click', (e) => {
   closePopup(imageBig);
 })
+
 
 
 initialCards.forEach(function (element) {
@@ -182,6 +210,7 @@ function toggleButtonState (inputList, buttonElement, arr){
   }
 };
 
+enableValidation()
 // Функция принимает массив полей ввода
 // и элемент кнопки, состояние которой нужно менять
 enableValidation ({
@@ -192,3 +221,5 @@ enableValidation ({
   inputErrorClass: 'popup__input__error',
   errorClass: 'popup__error_visible',
 })
+
+
