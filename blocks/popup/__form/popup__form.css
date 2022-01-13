@@ -1,4 +1,4 @@
-.popup__field {
+.popup__form {
   max-width: 358px;
   margin: 0 auto;
   display: flex;
@@ -6,7 +6,7 @@
 }
 
 @media (max-width: 530px) {
-  .popup__field {
+  .popup__form {
     max-width: 238px;
   }
 }

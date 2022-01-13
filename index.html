@@ -40,23 +40,25 @@
     <div class="popup popup_profile">
       <div class="popup__container">
         <button class="popup__close-btn popup__close-btn_profile" type="button"></button>
-        <form name="subscribeFormclass" class="popup__field popup__field_profile">
+        <form name="subscribeFormclass" class="popup__form popup__form_profile">
           <h2 class="popup__title">Редактировать профиль</h2>
           <input
             type="text"
             name="userName"
-            class="popup__input popup__input_type_name"
+            class="popup__input popup__input_type_name" id="nameInput"
             required
-            placeholder="Ваше имя"
+            placeholder="Ваше имя" minlength="2" maxlength="40"
           />
+          <span class='popup__input_error_visible' id="nameInputError"></span>
           <input
             type="text"
             name="userJob"
-            class="popup__input popup__input_type_work"
+            class="popup__input popup__input_type_work" id="aboutInput"
             required
-            placeholder="Ваша профессия"
+            placeholder="Ваша профессия" minlength="2" maxlength="200"
           />
-          <button class="popup__submit" type="submit" value="submit">
+          <span class='popup__input_error_visible' id="aboutInputError"></span>
+          <button class="popup__button popup__button_action" type="submit" value="submit" disabled>
             Сохранить
           </button>
         </form>
@@ -72,15 +74,17 @@
     <div class="popup popup_mesto">
       <div class="popup__container">
         <button class="popup__close-btn popup__close-btn_mesto" type="button"></button>
-        <form name="placeImageFormclass" class="popup__field popup__field_mesto">
+        <form name="placeImageFormclass" class="popup__form popup__form_mesto">
           <h2 class="popup__title">Новое место</h2>
-          <input type="text" name="imageName" class="popup__input popup__input_image_name"
-            required placeholder="Название"
+          <input type="text" name="imageName" class="popup__input popup__input_image_name" id="imageInput"
+            required placeholder="Название" minlength="2" maxlength="30"
           />
-          <input type="text" name="imageSrc"  class="popup__input popup__input_image_src"
+          <span class='popup__input_error_visible' id="imageInputError"></span>
+          <input type="url" name="imageSrc"  class="popup__input popup__input_image_src" id="srcInput"
             required placeholder="Ссылка на картинку"
           />
-          <button class="popup__submit" type="submit" value="submit">
+          <span class='popup__input_error_visible' id="srcInputError"></span>
+          <button class="popup__button popup__button_action" type="submit" value="submit" disabled>
             Сохранить
           </button>
           </form>

@@ -1,4 +1,4 @@
-.popup__submit {
+.popup__button {
   padding: 0;
   border: none;
   font: inherit;
@@ -21,7 +21,7 @@
 }
 
 @media (max-width: 530px) {
-  .popup__submit {
+  .popup__button {
     width: 238px;
     height: 46px;
     font-size: 14px;
@@ -31,8 +31,14 @@
   }
 }
 
-.popup__submit:hover {
+.popup__button:hover {
   opacity: 0.8;
   cursor: pointer;
   transition: all 0.5s ease-out;
+}
+
+.popup__button_disabled {
+  background-color:  #fff;
+  color:black;
+  cursor: default;
 }

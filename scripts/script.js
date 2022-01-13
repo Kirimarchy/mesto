@@ -5,20 +5,21 @@ const profilePopup = document.querySelector('.popup_profile');
 const mestoPopup = document.querySelector('.popup_mesto');
 const imageBig = document.querySelector('.popup_image');
 const closeImageBtn = document.querySelector('.popup__close-btn_image');
-const formProfile = document.querySelector('.popup__field_profile');      // Воспользуйтесь методом querySelector()
+const formProfile = document.querySelector('.popup__form_profile');      // Воспользуйтесь методом querySelector()
 const closeMestoBtn = document.querySelector('.popup__close-btn_mesto'); // Находим поля формы в DOM
 const closeProfile = document.querySelector('.popup__close-btn_profile');
 const profileName = document.querySelector('.profile__title');
 const nameInput = document.querySelector('.popup__input_type_name');
 const profession = document.querySelector('.profile__subtitle');
 const jobInput = document.querySelector('.popup__input_type_work');
-const formMesto = document.querySelector('.popup__field_mesto');
+const formMesto = document.querySelector('.popup__form_mesto');
 const imageName = document.querySelector('.popup__input_image_name');
 const imageSrc = document.querySelector('.popup__input_image_src');
 const elementTemplate = document.querySelector('.element-template').content;
 const elementList = document.querySelector('.elements');
 const imagePopup = document.querySelector('.popup__image_opened');
 const imageTitle = document.querySelector('.popup__title_opened');
+
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -109,4 +110,85 @@ formMesto.addEventListener('submit', function (e) {
   closePopup(mestoPopup);
   imageName.value = '';
   imageSrc.value = '';
+})
+
+
+const showInputError = (formElement, inputElement, { inputErrorClass }, errorMessage) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
+  errorElement.textContent = errorMessage;
+  inputElement.classList.add(inputErrorClass)
+}
+
+const hideInputError = (formElement, inputElement, { inputErrorClass }) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}Error`)
+  errorElement.textContent = ''
+  inputElement.classList.remove(inputErrorClass)
+}
+
+const checkInputValidity = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+};
+
+const setEventListeners = (formElement, arr) => {
+  const inputList = Array.from(formElement.querySelectorAll(arr.inputSelector));
+  const buttonElement = formElement.querySelector(arr.submitButtonSelector);
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', function () {
+      checkInputValidity(formElement, inputElement, arr);
+      // чтобы проверять его при изменении любого из полей
+      toggleButtonState(inputList, buttonElement, arr);
+    });
+  });
+}; 
+
+
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll(arr.formSelector));
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+    });
+  setEventListeners(formElement, arr);
+});
+
+
+// Функция принимает массив полей
+
+const hasInvalidInput = (inputList) => {
+  // проходим по этому массиву методом some
+  return inputList.some((inputElement) => {
+    // Если поле не валидно, колбэк вернёт true
+    // Обход массива прекратится и вся фунцкция
+    // hasInvalidInput вернёт true
+
+    return !inputElement.validity.valid;
+  })
+};
+
+function toggleButtonState (inputList, buttonElement, arr){
+  // Если есть хотя бы один невалидный инпут
+  if (hasInvalidInput(inputList)) {
+    // сделай кнопку неактивной
+    buttonElement.setAttribute('disabled', true);
+    buttonElement.classList.add(arr.inactiveButtonClass);
+  } else {
+    // иначе сделай кнопку активной
+    buttonElement.removeAttribute('disabled', true);
+    buttonElement.classList.remove(arr.inactiveButtonClass);
+  }
+};
+
+// Функция принимает массив полей ввода
+// и элемент кнопки, состояние которой нужно менять
+enableValidation ({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input__error',
+  errorClass: 'popup__error_visible',
 })
