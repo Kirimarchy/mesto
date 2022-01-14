@@ -152,25 +152,25 @@ formMesto.addEventListener('submit', function (e) {
 })
 
 
-const showInputError = (formElement, inputElement, errorMessage) => {
-  inputElement.classList.add('popup__input_type_error');
+const showInputError = (formElement, inputElement, errorMessage, config) => {
+  inputElement.classList.add(config.inputErrorClass);
   const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
   errorElement.textContent = errorMessage;
-  inputElement.classList.add(inputErrorClass)
+  inputElement.classList.add(config.inputErrorClass)
 }
 
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement, config) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
-  inputElement.classList.remove('popup__input_type_error');
+  inputElement.classList.remove(config.inputErrorClass);
   errorElement.textContent = '';
-  inputElement.classList.remove(inputErrorClass)
+  inputElement.classList.remove(config.inputErrorClass)
 }
 
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement, config) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, config);
   }
 };
 
@@ -194,14 +194,14 @@ formElement.addEventListener("submit", function (evt) {
 
 // Вызовем toggleButtonState, чтобы не ждать ввода данных в поля
 
-function toggleButtonState (inputList, buttonElement){
+function toggleButtonState (inputList, buttonElement, config){
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
-    buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.classList.add(config.inactiveButtonClass);
   } else {
     // иначе сделай кнопку активной
-    buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.classList.remove(config.inactiveButtonClass);
   }
 };
 
@@ -210,9 +210,9 @@ const setEventListeners = (config) => {
   const buttonElement = document.querySelector(config.submitButtonSelector);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement);
+      checkInputValidity(formElement, inputElement, config);
       // чтобы проверять его при изменении любого из полей
-      toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+      toggleButtonState(inputList, buttonElement, config);
     });
   });
 }; 
@@ -223,7 +223,7 @@ const enableValidation = (config) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
-  setEventListeners(config);
+  setEventListeners(formElement, config);
 });
 };
 
