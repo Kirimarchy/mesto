@@ -187,10 +187,10 @@ const hasInvalidInput = (inputList) => {
   })
 };
 
-formElement.addEventListener("submit", function (evt) {
+/*config.formElement.addEventListener("submit", function (evt) {
   // Отменим стандартное поведение по сабмиту
   evt.preventDefault();
-});
+});*/
 
 // Вызовем toggleButtonState, чтобы не ждать ввода данных в поля
 
@@ -198,9 +198,11 @@ function toggleButtonState (inputList, buttonElement, config){
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
+    buttonElement.setAttribute('disabled', true);
     buttonElement.classList.add(config.inactiveButtonClass);
   } else {
     // иначе сделай кнопку активной
+    buttonElement.removeAttribute('disabled');
     buttonElement.classList.remove(config.inactiveButtonClass);
   }
 };
