@@ -15,7 +15,8 @@ const closeMestoBtn = document.querySelector('.popup__close-btn_mesto');
 const closeProfile = document.querySelector('.popup__close-btn_profile');
 
 //Form
-
+const formElement = document.querySelector('.popup__form');
+const inputElement = document.querySelector('.popup__input');
 const formProfile = document.querySelector('.popup__form_profile');
 const formMesto = document.querySelector('.popup__form_mesto');    
 
@@ -32,6 +33,18 @@ const elementTemplate = document.querySelector('.element-template').content;
 const elementList = document.querySelector('.elements');
 const imagePopup = document.querySelector('.popup__image_opened');
 const imageTitle = document.querySelector('.popup__title_opened');
+
+//Validation
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
+
+
 
 //закрытие по оверлей
 const setEsclistener = function(evt) {
@@ -152,25 +165,25 @@ formMesto.addEventListener('submit', function (e) {
 })
 
 
-const showInputError = (formElement, inputElement, errorMessage, config) => {
-  inputElement.classList.add(config.inputErrorClass);
+const showInputError = (formElement, inputElement, errorMessage, { inputErrorClass }) => {
+  inputElement.classList.add(inputErrorClass);
   const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
   errorElement.textContent = errorMessage;
-  inputElement.classList.add(config.inputErrorClass)
+  inputElement.classList.add(inputErrorClass)
 }
 
-const hideInputError = (formElement, inputElement, config) => {
+const hideInputError = (formElement, inputElement, {inputErrorClass}) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
-  inputElement.classList.remove(config.inputErrorClass);
+  inputElement.classList.remove(inputErrorClass);
   errorElement.textContent = '';
-  inputElement.classList.remove(config.inputErrorClass)
+  inputElement.classList.remove(inputErrorClass)
 }
 
-const checkInputValidity = (formElement, inputElement, config) => {
+const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
-    hideInputError(formElement, inputElement, config);
+    hideInputError(formElement, inputElement);
   }
 };
 
@@ -194,16 +207,17 @@ const hasInvalidInput = (inputList) => {
 
 // Вызовем toggleButtonState, чтобы не ждать ввода данных в поля
 
-function toggleButtonState (inputList, buttonElement, config){
+function toggleButtonState (inputList, buttonElement){
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
-    buttonElement.setAttribute('disabled', true);
-    buttonElement.classList.add(config.inactiveButtonClass);
-  } else {
-    // иначе сделай кнопку активной
     buttonElement.removeAttribute('disabled');
     buttonElement.classList.remove(config.inactiveButtonClass);
+  } else {
+    // иначе сделай кнопку активной
+    buttonElement.setAttribute('disabled', true);
+    buttonElement.classList.add(config.inactiveButtonClass);
+    console.log(buttonElement);
   }
 };
 
@@ -212,9 +226,9 @@ const setEventListeners = (config) => {
   const buttonElement = document.querySelector(config.submitButtonSelector);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement, config);
+      checkInputValidity(formElement, inputElement);
       // чтобы проверять его при изменении любого из полей
-      toggleButtonState(inputList, buttonElement, config);
+      toggleButtonState(inputList, buttonElement);
     });
   });
 }; 
@@ -229,13 +243,6 @@ const enableValidation = (config) => {
 });
 };
 
-enableValidation()
+enableValidation(config);
 
-enableValidation ({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible',
-});
+
