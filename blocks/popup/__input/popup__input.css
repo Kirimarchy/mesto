@@ -19,12 +19,4 @@
   border-bottom: 1px solid red; /* красная рамка для некорректных данных */
 }
 
-.popup_error_visible {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
-  margin-top: 5px;
-  opacity: 1;
-  display: block;
-  color: #ff0000;
-}
+

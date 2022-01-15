@@ -41,7 +41,7 @@ const config = {
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
+  errorClass: 'popup_error_visible'
 };
 
 
@@ -162,28 +162,29 @@ formMesto.addEventListener('submit', function (e) {
   closePopup(mestoPopup);
   imageName.value = '';
   imageSrc.value = '';
+  toggleButtonState(true);
 })
 
 
-const showInputError = (formElement, inputElement, errorMessage, { inputErrorClass }) => {
+const showInputError = (formElement, inputElement, errorMessage, { inputErrorClass }, { errorClass }) => {
   inputElement.classList.add(inputErrorClass);
   const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
   errorElement.textContent = errorMessage;
-  inputElement.classList.add(inputErrorClass)
+  inputElement.classList.add(errorClass)
 }
 
-const hideInputError = (formElement, inputElement, {inputErrorClass}) => {
+const hideInputError = (formElement, inputElement, { inputErrorClass }, { errorClass }) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
   inputElement.classList.remove(inputErrorClass);
   errorElement.textContent = '';
-  inputElement.classList.remove(inputErrorClass)
+  inputElement.classList.remove(errorClass)
 }
 
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement, { inputErrorClass }, { errorClass }) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage, { inputErrorClass }, { errorClass });
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, { inputErrorClass }, { errorClass });
   }
 };
 
@@ -200,25 +201,36 @@ const hasInvalidInput = (inputList) => {
   })
 };
 
-/*config.formElement.addEventListener("submit", function (evt) {
-  // Отменим стандартное поведение по сабмиту
-  evt.preventDefault();
-});*/
 
-// Вызовем toggleButtonState, чтобы не ждать ввода данных в поля
-
-function toggleButtonState (inputList, buttonElement){
-  // Если есть хотя бы один невалидный инпут
+/*function toggleButtonState (inputList, buttonElement, {inactiveButtonClass}){
   if (hasInvalidInput(inputList)) {
-    // сделай кнопку неактивной
-    buttonElement.removeAttribute('disabled');
-    buttonElement.classList.remove(config.inactiveButtonClass);
+    buttonElement.setAttribute('disabled');
+    buttonElement.classList.add(inactiveButtonClass);
   } else {
-    // иначе сделай кнопку активной
-    buttonElement.setAttribute('disabled', true);
-    buttonElement.classList.add(config.inactiveButtonClass);
+    buttonElement.removeAttribute('disabled', true);
+    buttonElement.classList.remove(inactiveButtonClass);
     console.log(buttonElement);
   }
+};*/
+// Если есть хотя бы один невалидный инпут
+function toggleButtonState (inputList, buttonElement, {inactiveButtonClass}){
+  if (hasInvalidInput(inputList)) {
+    // сделай кнопку неактивной
+    disableSubmitButton(buttonElement, inactiveButtonClass);
+  } else {
+    // иначе сделай кнопку активной
+    enableSubmitButton(buttonElement, inactiveButtonClass);
+  }
+};
+
+const disableSubmitButton = (buttonElement, {inactiveButtonClass}) => {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.disabled = true;
+};
+
+const enableSubmitButton = (buttonElement, {inactiveButtonClass}) => {
+  buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.disabled = false;
 };
 
 const setEventListeners = (config) => {
@@ -228,7 +240,7 @@ const setEventListeners = (config) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement);
       // чтобы проверять его при изменении любого из полей
-      toggleButtonState(inputList, buttonElement);
+      toggleButtonState(inputList, buttonElement, {inactiveButtonClass});
     });
   });
 }; 
