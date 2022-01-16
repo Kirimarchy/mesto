@@ -210,8 +210,7 @@ const hasInvalidInput = (inputList) => {
   })
 };
 
-
-/*function toggleButtonState (inputList, buttonElement, inactiveButtonClass){
+function toggleButtonState (inputList, buttonElement, inactiveButtonClass){
   if (hasInvalidInput(inputList)) {
     buttonElement.setAttribute('disabled');
     buttonElement.classList.add(inactiveButtonClass);
@@ -220,30 +219,7 @@ const hasInvalidInput = (inputList) => {
     buttonElement.classList.remove(inactiveButtonClass);
     console.log(buttonElement);
   }
-};*/
-const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
-  // Если есть хотя бы один невалидный инпут
-
-  if (hasInvalidInput(inputList)) {
-    // сделай кнопку неактивной
-    disableSubmitButton(buttonElement, inactiveButtonClass);
-  } else {
-    // иначе сделай кнопку активной
-    enableSubmitButton(buttonElement, inactiveButtonClass);
-  }
 };
-
-const enableSubmitButton = (buttonElement, inactiveButtonClass) => {
-  buttonElement.classList.remove(inactiveButtonClass);
-  buttonElement.disabled = false;
-};
-
-const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
-  buttonElement.classList.add(inactiveButtonClass);
-  buttonElement.disabled = true;
-};
-
-
 const setEventListeners = ( formElement, 
   {inactiveButtonClass, inputErrorClass,
   inputSelector, submitButtonSelector, errorClass}) => {
