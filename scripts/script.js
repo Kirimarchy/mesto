@@ -46,6 +46,7 @@ const setEsclistener = function (evt) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  inputElement.classList.add(inputErrorClass);
   document.addEventListener('keydown', setEsclistener);
 }
 
@@ -172,7 +173,7 @@ const hideInputError = (formElement, inputElement, inputErrorClass, errorClass) 
 
 const checkInputValidity = (formElement, inputElement, inputErrorClass, errorClass) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage, inputErrorClass, errorClass);
+    showInputError(formElement, inputElement, inputErrorClass, errorClass, inputElement.validationMessage);
   } else {
     hideInputError(formElement, inputElement, inputErrorClass, errorClass);
   }

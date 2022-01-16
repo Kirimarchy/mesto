@@ -11,7 +11,6 @@
   box-sizing: border-box;
   width: 100%;
   margin-bottom: 5px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .popup__input:focus {
@@ -25,5 +24,3 @@
 .popup__input_type_error {
   border-bottom: 1px solid red; /* красная рамка для некорректных данных */
 }
-
-
