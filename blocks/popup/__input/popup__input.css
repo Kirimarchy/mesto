@@ -8,9 +8,16 @@
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   background-color: rgba(0, 0, 0, 0);
-  margin-bottom: 30px;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.popup__input:focus {
+  outline: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
 .popup__input:last-of-type {
   margin-bottom: 0;
 }

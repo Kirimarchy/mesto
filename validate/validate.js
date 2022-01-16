@@ -4,7 +4,7 @@ const config = {
     submitButtonSelector: '.popup__button',
     inactiveButtonClass: 'popup__button_disabled',
     inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup_error_visible'
+    errorClass: 'popup__error-visible'
 }
 
 export { config };
