@@ -3,7 +3,6 @@ import { config } from './config.js';
 import { disableSubmitButton } from './validate.js';
 
 //Popup
-const popup = document.querySelector('.popup');
 const profilePopup = document.querySelector('.popup_profile');
 const mestoPopup = document.querySelector('.popup_mesto');
 const imageBig = document.querySelector('.popup_image');
@@ -16,8 +15,7 @@ const addMestoBtn = document.querySelector('.profile__add-button');
 const closeImageBtn = document.querySelector('.popup__close-btn_image');
 const closeMestoBtn = document.querySelector('.popup__close-btn_mesto');
 const closeProfile = document.querySelector('.popup__close-btn_profile');
-const submitBtn = document.querySelector('.popup__button_create');
-/*const saveBtn = document.querySelector('.popup__button')*/
+const submitBtn = document.querySelector('.popup__button_submit');
 
 //Form
 const formProfile = document.querySelector('.popup__form_profile');

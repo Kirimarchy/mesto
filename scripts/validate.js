@@ -46,6 +46,7 @@ const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
 const enableSubmitButton = (buttonElement, inactiveButtonClass) => {
     buttonElement.classList.remove(inactiveButtonClass);
     buttonElement.disabled = false;
+    console.log(inactiveButtonClass)
 };
 
 const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
@@ -61,7 +62,7 @@ const setEventListeners = (formElement,
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', function () {
             checkInputValidity(formElement, inputElement, inputErrorClass, errorClass);
-            toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+            toggleButtonState(inputList, buttonElement, inactiveButtonClass);      
         });
     });
 };
