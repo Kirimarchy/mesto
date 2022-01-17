@@ -7,3 +7,13 @@
   display: none;
   color: #ff0000;
 }
+
+@media screen and (max-width: 619px) {
+  .popup__error {
+    margin-bottom: 20px;
+  }
+}
+
+.popup__error:last-of-type {
+  margin: 0;
+}

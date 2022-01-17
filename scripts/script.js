@@ -1,7 +1,9 @@
-import { initialCards } from '../array/cards.js';
-import { config } from '../validate/validate.js';
+import { initialCards } from './cards.js';
+import { config } from './config.js';
+import { disableSubmitButton } from './validate.js';
 
 //Popup
+const popup = document.querySelector('.popup');
 const profilePopup = document.querySelector('.popup_profile');
 const mestoPopup = document.querySelector('.popup_mesto');
 const imageBig = document.querySelector('.popup_image');
@@ -14,9 +16,10 @@ const addMestoBtn = document.querySelector('.profile__add-button');
 const closeImageBtn = document.querySelector('.popup__close-btn_image');
 const closeMestoBtn = document.querySelector('.popup__close-btn_mesto');
 const closeProfile = document.querySelector('.popup__close-btn_profile');
+const submitBtn = document.querySelector('.popup__button_create');
+/*const saveBtn = document.querySelector('.popup__button')*/
 
 //Form
-const inputElement = document.querySelector('.popup__input');
 const formProfile = document.querySelector('.popup__form_profile');
 const formMesto = document.querySelector('.popup__form_mesto');
 
@@ -34,9 +37,7 @@ const elementList = document.querySelector('.elements');
 const imagePopup = document.querySelector('.popup__image_opened');
 const imageTitle = document.querySelector('.popup__title_opened');
 
-
-
-//закрытие по Esc
+//Closing by Esc
 const setEsclistener = function (evt) {
   if (evt.key === esc) {
     const openedPopup = document.querySelector('.popup_opened');
@@ -44,9 +45,24 @@ const setEsclistener = function (evt) {
   }
 };
 
+//Closing by overlay
+function closeByOverlay(popup) {
+  popup.addEventListener("click", (e) => {
+    if (
+      e.target.classList.contains("popup") ||
+      e.target.classList.contains("popup__btn_close")
+    ) {
+      closePopup(popup);
+    }
+  });
+}
+
+closeByOverlay(profilePopup);
+closeByOverlay(mestoPopup);
+closeByOverlay(imageBig);
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  inputElement.classList.add(inputErrorClass);
   document.addEventListener('keydown', setEsclistener);
 }
 
@@ -54,96 +70,78 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', setEsclistener);
 }
-profilePopup.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closePopup(profilePopup);
-  }
-});
 
-mestoPopup.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closePopup(mestoPopup);
-  }
-});
-imageBig.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closePopup(imageBig);
-  }
-});
-
-editProfileBtn.addEventListener('click', (e) => {
+editProfileBtn.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profession.textContent;
   openPopup(profilePopup);
 })
 
-closeProfile.addEventListener('click', (e) => {
+
+closeProfile.addEventListener('click', () => {
   closePopup(profilePopup);
 })
 
-addMestoBtn.addEventListener('click', (e) => {
+addMestoBtn.addEventListener('click', () => {
   openPopup(mestoPopup);
+ 
 })
 
-closeMestoBtn.addEventListener('click', (e) => {
+closeMestoBtn.addEventListener('click', () => {
   closePopup(mestoPopup);
 })
 
-closeImageBtn.addEventListener('click', (e) => {
+closeImageBtn.addEventListener('click', () => {
   closePopup(imageBig);
 })
 
-
+formMesto.addEventListener('submit', submitAddCardForm);
+formProfile.addEventListener('submit', submitProfileForm);
+ 
 
 initialCards.forEach(function (element) {
   const initialCardsElement = createCard(element);
   elementList.append(initialCardsElement);
 })
 
+// like card
+function likeCard(e) {
+  e.target.classList.toggle('element__like_active');
+}
+// delete card
+function deleteCard(e) {
+  e.currentTarget.closest('.element').remove()
+}
+
 function createCard(card) {
 
   const initialCardsElement = elementTemplate.cloneNode(true);
   const cardName = initialCardsElement.querySelector('.element__title');
-  const cardAlt = initialCardsElement.querySelector('.element__image');
-  const cardLink = initialCardsElement.querySelector('.element__image');
-
+  const cardImage = initialCardsElement.querySelector('.element__image');
+  initialCardsElement.querySelector('.element__like').addEventListener('click', likeCard);
+  initialCardsElement.querySelector('.element__delete').addEventListener('click',deleteCard);
   cardName.textContent = card.name;
-  cardAlt.alt = card.name;
-  cardLink.src = card.link;
-
-  cardLink.addEventListener('click', () => {
-    imagePopup.src = cardLink.src;
-    imageTitle.textContent = cardName.textContent;
+  cardImage.alt = card.name;
+  cardImage.src = card.link;
+  cardImage.addEventListener('click', () => {
+    imagePopup.src = card.link;
+    imageTitle.textContent = card.name;
     openPopup(imageBig);
-  })
-
-
-  initialCardsElement.querySelector('.element__like').addEventListener('click', function (e) {
-    e.target.classList.toggle('element__like_active');
-  });
-
-  initialCardsElement.querySelector('.element__delete').addEventListener('click', e => {
-    e.currentTarget.closest('.element').remove()
   })
   return initialCardsElement;
 }
-
-
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function submitProfileForm(e) {
   e.preventDefault();                       // Эта строчка отменяет стандартную отправку формы.
   profileName.textContent = nameInput.value; // Получите значение полей jobInput и nameInput из свойства value
   profession.textContent = jobInput.value;  // Вставьте новые значения с помощью textContent
-  // Выберите элементы, куда должны быть вставлены значения полей
   closePopup(profilePopup);
 }
 
-formProfile.addEventListener('submit', submitProfileForm);
-
-formMesto.addEventListener('submit', function (e) {
+function submitAddCardForm(e) {
   e.preventDefault();
-  const initialCardsElement = createCard(
+  const initialCardsElement = createCard (
     {
       name: imageName.value,
       link: imageSrc.value
@@ -151,87 +149,12 @@ formMesto.addEventListener('submit', function (e) {
   );
   elementList.prepend(initialCardsElement);
   closePopup(mestoPopup);
-  imageName.value = '';
-  imageSrc.value = '';
-})
-
-
-const showInputError = (formElement, inputElement, inputErrorClass, errorClass, errorMessage) => {
-  inputElement.classList.add(inputErrorClass);
-  const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add(errorClass)
-  console.log(inputErrorClass)
+  disableSubmitButton(submitBtn, config.inactiveButtonClass);
 }
 
-const hideInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
-  const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
-  inputElement.classList.remove(inputErrorClass);
-  errorElement.classList.remove(errorClass);
-  errorElement.textContent = '';
-}
 
-const checkInputValidity = (formElement, inputElement, inputErrorClass, errorClass) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputErrorClass, errorClass, inputElement.validationMessage);
-  } else {
-    hideInputError(formElement, inputElement, inputErrorClass, errorClass);
-  }
-};
 
-// Функция принимает массив полей
 
-const hasInvalidInput = (inputList) => {
-  // проходим по этому массиву методом some
-  return inputList.some((inputElement) => {
-    // Если поле не валидно, колбэк вернёт true
-    // Обход массива прекратится и вся фунцкция
-    // hasInvalidInput вернёт true
-    return !inputElement.validity.valid;
-  })
-};
 
-const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
-  if (hasInvalidInput(inputList)) {
-    disableSubmitButton(buttonElement, inactiveButtonClass);
-  } else {
-    enableSubmitButton(buttonElement, inactiveButtonClass);
-  }
-};
-
-const enableSubmitButton = (buttonElement, inactiveButtonClass) => {
-  buttonElement.classList.remove(inactiveButtonClass);
-  buttonElement.disabled = false;
-};
-
-const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
-  buttonElement.classList.add(inactiveButtonClass);
-  buttonElement.disabled = true;
-};
-
-const setEventListeners = (formElement,
-  { inactiveButtonClass, inputErrorClass,
-    inputSelector, submitButtonSelector, errorClass }) => {
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-  const buttonElement = formElement.querySelector(submitButtonSelector);
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement, inputErrorClass, errorClass);
-      toggleButtonState(inputList, buttonElement, inactiveButtonClass);
-    });
-  });
-};
-
-const enableValidation = (config) => {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
-  formList.forEach((formElement) => {
-    formElement.addEventListener('submit', function (evt) {
-      evt.preventDefault();
-    });
-    setEventListeners(formElement, config);
-  });
-};
-
-enableValidation(config);
 
 
