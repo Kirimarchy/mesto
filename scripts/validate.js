@@ -43,16 +43,16 @@ const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
     }
 };
 
+const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
+    buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.disabled = true;
+};
 const enableSubmitButton = (buttonElement, inactiveButtonClass) => {
     buttonElement.classList.remove(inactiveButtonClass);
     buttonElement.disabled = false;
     console.log(inactiveButtonClass)
 };
 
-const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
-    buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.disabled = true;
-};
 
 const setEventListeners = (formElement,
     { inactiveButtonClass, inputErrorClass,

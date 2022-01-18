@@ -73,6 +73,7 @@ editProfileBtn.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profession.textContent;
   openPopup(profilePopup);
+  disableSubmitButton(submitBtn, config.inactiveButtonClass);
 })
 
 
