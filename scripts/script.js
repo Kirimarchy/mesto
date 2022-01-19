@@ -7,19 +7,19 @@ const profilePopup = document.querySelector('.popup_profile');
 const mestoPopup = document.querySelector('.popup_mesto');
 const imageBig = document.querySelector('.popup_image');
 
-//Buttons
+//Form
+const formProfile = document.querySelector('.popup__form_profile');
+const formMesto = document.querySelector('.popup__form_mesto');
 
+//Buttons
 const esc = "Escape";
 const editProfileBtn = document.querySelector('.profile__edit-button');
 const addMestoBtn = document.querySelector('.profile__add-button');
 const closeImageBtn = document.querySelector('.popup__close-btn_image');
 const closeMestoBtn = document.querySelector('.popup__close-btn_mesto');
 const closeProfile = document.querySelector('.popup__close-btn_profile');
-const submitBtn = document.querySelector('.popup__button_submit');
-
-//Form
-const formProfile = document.querySelector('.popup__form_profile');
-const formMesto = document.querySelector('.popup__form_mesto');
+const submitBtn = mestoPopup.querySelector('.popup__button_submit');
+const submitProfileBtn = document.querySelector('.popup__button_submit');
 
 //Inputs
 const profileName = document.querySelector('.profile__title');
@@ -59,6 +59,7 @@ closeByOverlay(profilePopup);
 closeByOverlay(mestoPopup);
 closeByOverlay(imageBig);
 
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', setEsclistener);
@@ -73,7 +74,8 @@ editProfileBtn.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profession.textContent;
   openPopup(profilePopup);
-  disableSubmitButton(submitBtn, config.inactiveButtonClass);
+  formProfile.reset();
+  disableSubmitButton(submitProfileBtn, config.inactiveButtonClass);
 })
 
 
@@ -148,6 +150,7 @@ function submitAddCardForm(e) {
   );
   elementList.prepend(initialCardsElement);
   closePopup(mestoPopup);
+  formMesto.reset();
   disableSubmitButton(submitBtn, config.inactiveButtonClass);
 }
 
