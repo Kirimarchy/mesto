@@ -1,6 +1,6 @@
-import { initialCards } from './cards.js';
-import { config } from './config.js';
-import { disableSubmitButton } from './validate.js';
+import initialCards from './cards.js';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
 
 //Popup
 const profilePopup = document.querySelector('.popup_profile');
@@ -30,29 +30,52 @@ const imageName = document.querySelector('.popup__input_image_name');
 const imageSrc = document.querySelector('.popup__input_image_src');
 
 //Template
-const elementTemplate = document.querySelector('.element-template').content;
-const elementList = document.querySelector('.elements');
-const imagePopup = document.querySelector('.popup__image_opened');
-const imageTitle = document.querySelector('.popup__title_opened');
+const elements = document.querySelector('.elements');
+
+//Validator
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button_submit',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error-visible',
+}
+
+ //Карточки по дефолту
+// Функция, которая вставляет данные в разметку и готовит карточки к публикации
+function generateCard(template, popup, name, link) {
+    const newCards = new Card(template, popup, name, link);
+    return newCards.createCard(name, link)
+}
+// Обходим массив
+initialCards.forEach((element) => {
+    const initialCardsElement = generateCard('.element-template', openPopup, element.name, element.link);
+    elements.append(initialCardsElement);//Добавляем карточку в конце массива
+});
+
+// Обработчик «отправки» формы, хотя пока
+// она никуда отправляться не будет
+function submitProfileForm(e) {
+  e.preventDefault();                       // Эта строчка отменяет стандартную отправку формы.
+  profileName.textContent = nameInput.value; // Получите значение полей jobInput и nameInput из свойства value
+  profession.textContent = jobInput.value;  // Вставьте новые значения с помощью textContent
+  closePopup(profilePopup);
+}
 
 //Closing by Esc
-const setEsclistener = function (evt) {
+function closeByEsc(evt) {
   if (evt.key === esc) {
     const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
   }
 };
-
 //Closing by overlay
-function closeByOverlay(popup) {
-  popup.addEventListener("click", (e) => {
-    if (
-      e.target.classList.contains("popup") ||
-      e.target.classList.contains("popup__btn_close")
-    ) {
-      closePopup(popup);
-    }
-  });
+function closeByOverlay(e) {
+  const popupOpened = document.querySelector('.popup_opened');
+  if (e.target === popupOpened) {
+      closePopup(popupOpened)
+  }
 }
 
 closeByOverlay(profilePopup);
@@ -62,23 +85,43 @@ closeByOverlay(imageBig);
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', setEsclistener);
+  document.addEventListener('click', closeByOverlay);
+  document.addEventListener('keydown', closeByEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', setEsclistener);
+  document.removeEventListener('click', closeByOverlay);
+  document.removeEventListener('keydown', closeByEsc);
 }
 
 editProfileBtn.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profession.textContent;
   openPopup(profilePopup);
+  const formDisabled = new FormValidator(config, config.formSelector);
   formProfile.reset();
-  disableSubmitButton(submitProfileBtn, config.inactiveButtonClass);
+  formDisabled.disableSubmitButton(submitProfileBtn, config.inactiveButtonClass);
 })
 
+function submitAddCardForm(e) {
+  e.preventDefault();
+  const newCard = generateCard ('.element-template', openPopup, 
+  imageName.value, imageSrc.value);
+  elements.prepend(newCard);
+  const formDisabled = new FormValidator(config, config.formSelector);
+  closePopup(mestoPopup);
+  formMesto.reset();
+  formDisabled.disableSubmitButton(submitBtn, config.inactiveButtonClass);
+}
 
+//Ecapsulation
+const valid = new FormValidator(config, formMesto);  
+valid.enableValidation(config, config.formSelector);
+const formValidProfile = new FormValidator(config, formProfile)
+formValidProfile.enableValidation(config, config.formSelector)
+
+//Открытие/закрытие
 closeProfile.addEventListener('click', () => {
   closePopup(profilePopup);
 })
@@ -95,64 +138,12 @@ closeMestoBtn.addEventListener('click', () => {
 closeImageBtn.addEventListener('click', () => {
   closePopup(imageBig);
 })
-
-formMesto.addEventListener('submit', submitAddCardForm);
+//Сабмиты
+formMesto.addEventListener('submit', submitAddCardForm)
 formProfile.addEventListener('submit', submitProfileForm);
  
 
-initialCards.forEach(function (element) {
-  const initialCardsElement = createCard(element);
-  elementList.append(initialCardsElement);
-})
 
-// like card
-function likeCard(e) {
-  e.target.classList.toggle('element__like_active');
-}
-// delete card
-function deleteCard(e) {
-  e.currentTarget.closest('.element').remove()
-}
-
-function createCard(card) {
-
-  const initialCardsElement = elementTemplate.cloneNode(true);
-  const cardName = initialCardsElement.querySelector('.element__title');
-  const cardImage = initialCardsElement.querySelector('.element__image');
-  initialCardsElement.querySelector('.element__like').addEventListener('click', likeCard);
-  initialCardsElement.querySelector('.element__delete').addEventListener('click',deleteCard);
-  cardName.textContent = card.name;
-  cardImage.alt = card.name;
-  cardImage.src = card.link;
-  cardImage.addEventListener('click', () => {
-    imagePopup.src = card.link;
-    imageTitle.textContent = card.name;
-    openPopup(imageBig);
-  })
-  return initialCardsElement;
-}
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
-function submitProfileForm(e) {
-  e.preventDefault();                       // Эта строчка отменяет стандартную отправку формы.
-  profileName.textContent = nameInput.value; // Получите значение полей jobInput и nameInput из свойства value
-  profession.textContent = jobInput.value;  // Вставьте новые значения с помощью textContent
-  closePopup(profilePopup);
-}
-
-function submitAddCardForm(e) {
-  e.preventDefault();
-  const initialCardsElement = createCard (
-    {
-      name: imageName.value,
-      link: imageSrc.value
-    }
-  );
-  elementList.prepend(initialCardsElement);
-  closePopup(mestoPopup);
-  formMesto.reset();
-  disableSubmitButton(submitBtn, config.inactiveButtonClass);
-}
 
 
 
