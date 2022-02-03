@@ -17,8 +17,8 @@ class Card {  //принимает в конструктор её данные �
 
    _openCard(title, link) {
       const imagePopup = document.querySelector('.popup_image');
-      const imageTitle = document.querySelector('.popup__title');
-      const imageBig = document.querySelector('.popup__image');
+      const imageTitle = document.querySelector('.popup__title_opened');
+      const imageBig = document.querySelector('.popup__image_opened');
       this._openPopup(imagePopup);
       imageTitle.textContent = title;
       imageBig.src = link;

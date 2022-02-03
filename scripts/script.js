@@ -1,11 +1,10 @@
-import initialCards from './cards.js';
+import initialCards from './initialCards.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 
 //Popup
 const profilePopup = document.querySelector('.popup_profile');
 const mestoPopup = document.querySelector('.popup_mesto');
-const imageBig = document.querySelector('.popup_image');
 
 //Form
 const formProfile = document.querySelector('.popup__form_profile');
@@ -15,9 +14,6 @@ const formMesto = document.querySelector('.popup__form_mesto');
 const esc = "Escape";
 const editProfileBtn = document.querySelector('.profile__edit-button');
 const addMestoBtn = document.querySelector('.profile__add-button');
-const closeImageBtn = document.querySelector('.popup__close-btn_image');
-const closeMestoBtn = document.querySelector('.popup__close-btn_mesto');
-const closeProfile = document.querySelector('.popup__close-btn_profile');
 const submitBtn = mestoPopup.querySelector('.popup__button_submit');
 const submitProfileBtn = document.querySelector('.popup__button_submit');
 
@@ -42,6 +38,13 @@ const config = {
   errorClass: 'popup__error-visible',
 }
 
+//Ecapsulation
+const formValidMesto = new FormValidator(config, formMesto);  
+formValidMesto.enableValidation(config, config.formSelector);
+const formValidProfile = new FormValidator(config, formProfile);
+formValidProfile.enableValidation(config, config.formSelector);
+ 
+
  //Карточки по дефолту
 // Функция, которая вставляет данные в разметку и готовит карточки к публикации
 function generateCard(template, popup, name, link) {
@@ -54,14 +57,27 @@ initialCards.forEach((element) => {
     elements.append(initialCardsElement);//Добавляем карточку в конце массива
 });
 
-// Обработчик «отправки» формы, хотя пока
+ // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function submitProfileForm(e) {
-  e.preventDefault();                       // Эта строчка отменяет стандартную отправку формы.
+  e.preventDefault();                    // Эта строчка отменяет стандартную отправку формы.
   profileName.textContent = nameInput.value; // Получите значение полей jobInput и nameInput из свойства value
   profession.textContent = jobInput.value;  // Вставьте новые значения с помощью textContent
   closePopup(profilePopup);
 }
+//Closing by close and overlay
+const popups = document.querySelectorAll('.popup')
+
+popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close-btn')) {
+          closePopup(popup)
+        }
+    })
+})
 
 //Closing by Esc
 function closeByEsc(evt) {
@@ -70,74 +86,40 @@ function closeByEsc(evt) {
     closePopup(openedPopup);
   }
 };
-//Closing by overlay
-function closeByOverlay(e) {
-  const popupOpened = document.querySelector('.popup_opened');
-  if (e.target === popupOpened) {
-      closePopup(popupOpened)
-  }
-}
-
-closeByOverlay(profilePopup);
-closeByOverlay(mestoPopup);
-closeByOverlay(imageBig);
-
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('click', closeByOverlay);
   document.addEventListener('keydown', closeByEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('click', closeByOverlay);
   document.removeEventListener('keydown', closeByEsc);
 }
-
-editProfileBtn.addEventListener('click', () => {
+//Редактирование профиля
+editProfileBtn.addEventListener('click', () => { 
+  openPopup(profilePopup);
+  formValidProfile.disableSubmitButton(submitProfileBtn, config.inactiveButtonClass);
   nameInput.value = profileName.textContent;
   jobInput.value = profession.textContent;
-  openPopup(profilePopup);
-  const formDisabled = new FormValidator(config, config.formSelector);
-  formProfile.reset();
-  formDisabled.disableSubmitButton(submitProfileBtn, config.inactiveButtonClass);
+  formValidProfile.resetValidation();
 })
-
+//Добавление карточки
 function submitAddCardForm(e) {
   e.preventDefault();
   const newCard = generateCard ('.element-template', openPopup, 
   imageName.value, imageSrc.value);
-  elements.prepend(newCard);
-  const formDisabled = new FormValidator(config, config.formSelector);
-  closePopup(mestoPopup);
   formMesto.reset();
-  formDisabled.disableSubmitButton(submitBtn, config.inactiveButtonClass);
+  elements.prepend(newCard);
+  formValidMesto.disableSubmitButton(submitBtn, config.inactiveButtonClass);
+  closePopup(mestoPopup);
 }
 
-//Ecapsulation
-const valid = new FormValidator(config, formMesto);  
-valid.enableValidation(config, config.formSelector);
-const formValidProfile = new FormValidator(config, formProfile)
-formValidProfile.enableValidation(config, config.formSelector)
-
 //Открытие/закрытие
-closeProfile.addEventListener('click', () => {
-  closePopup(profilePopup);
-})
-
 addMestoBtn.addEventListener('click', () => {
   openPopup(mestoPopup);
- 
-})
+ })
 
-closeMestoBtn.addEventListener('click', () => {
-  closePopup(mestoPopup);
-})
-
-closeImageBtn.addEventListener('click', () => {
-  closePopup(imageBig);
-})
 //Сабмиты
 formMesto.addEventListener('submit', submitAddCardForm)
 formProfile.addEventListener('submit', submitProfileForm);
