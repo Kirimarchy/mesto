@@ -1,10 +1,8 @@
 class FormValidator {  //принимает в конструктор объект настроек с селекторами и классами формы;
-    constructor(config, formElement, formProfile, formMesto) {//принимает вторым параметром элемент той формы, которая валидируется;
+    constructor(config, formElement) {//принимает вторым параметром элемент той формы, которая валидируется;
         this._config = config;
         this._inputSelector = config.inputSelector;                                                
         this._formElement = formElement; 
-        /*this._formProfile = formProfile; 
-        this._formMesto = formMesto; */
         this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); 
         this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector); 
     }
@@ -85,5 +83,3 @@ resetValidation() {
 }
 
 export default FormValidator
-
-

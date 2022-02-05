@@ -40,9 +40,9 @@ const config = {
 
 //Ecapsulation
 const formValidMesto = new FormValidator(config, formMesto);  
-formValidMesto.enableValidation(config, config.formSelector);
+formValidMesto.enableValidation();
 const formValidProfile = new FormValidator(config, formProfile);
-formValidProfile.enableValidation(config, config.formSelector);
+formValidProfile.enableValidation();
  
 
  //Карточки по дефолту
@@ -104,6 +104,7 @@ editProfileBtn.addEventListener('click', () => {
   jobInput.value = profession.textContent;
   formValidProfile.resetValidation();
 })
+
 //Добавление карточки
 function submitAddCardForm(e) {
   e.preventDefault();
