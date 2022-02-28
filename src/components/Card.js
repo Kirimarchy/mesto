@@ -3,10 +3,11 @@ class Card {
    //содержит приватные методы, которые работают с разметкой, устанавливают слушателей событий;                                   
    //содержит приватные методы для каждого обработчика;
    // Card принимает в конструктор функцию handleCardClick. Эта функция должна открывать попап с картинкой при клике на карточку.
-  constructor(name, link, selector, { handleCardClick }) {
+  constructor(name, link, elementSelector, { handleCardClick }) {
     this._name = name;
     this._link = link;
-    this._selector = selector;   
+    this._alt = name;
+    this._elementSelector = elementSelector;   
     this._handleCardClick = handleCardClick;  
     this._element = this._getTemplate();// Запишем разметку в поле _element   
     this._elementImage = this._element.querySelector('.element__image'); // картинка по селектору 
@@ -14,9 +15,8 @@ class Card {
    // Метод для выявления темплейта
     _getTemplate() { 
         return document
-            .querySelector(this._selector)    //Для каждой карточки создайте экземпляр класса Card
-            .content
-            .querySelector('.element')
+            .querySelector(this._elementSelector)    //Для каждой карточки создайте экземпляр класса Card
+            .content.querySelector('.element')
             .cloneNode(true);   
     }
     createCard() {
@@ -31,7 +31,7 @@ class Card {
 
 
    //Метод добавляет все обработчики в одном месте
-  _setEventListeners(_name, _link) {
+  _setEventListeners() {
   this._element.querySelector('.element__like').addEventListener('click', (evt) => {
       evt.target.classList.toggle('element__like_active')
   });

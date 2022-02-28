@@ -46,50 +46,36 @@ export class FormValidator {  //принимает в конструктор о�
 
    //обработчик форм
     _setEventListeners() {
-        this.toggleButtonState();  
-        this._inputList.forEach((inputElement) => {
+          this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
-                this._checkInputValidity(inputElement);
-                this.toggleButtonState();      
+                this._checkInputValidity(inputElement);    
+                  this._toggleButtonState(this._inputList);
             });
         });
     }
  // Деактивации кнопки сохранить (публичный, используется еще и в index.js)
     disableSubmitButton() {
-        this._buttonElement = this._formElement.querySelector(
-            this._submitButtonSelector
-          );
           this._buttonElement.disabled = true;
           this._buttonElement.classList.add(this._inactiveButtonClass);
         }
  // активация кнопки сохранить при успешном прохождении валидации
-    _enableSubmitButton() {
-        this._buttonElement.classList.remove(this._inactiveButtonClass);
+    enableSubmitButton() {
         this._buttonElement.disabled = false;
+        this._buttonElement.classList.remove(this._inactiveButtonClass);  
     };
 
 
    //Переключатель кнопки сабмита
-toggleButtonState() {
-    if (this._hasInvalidInput()) {
+_toggleButtonState(inputList) {
+    if (this._hasInvalidInput(inputList)) {
         this.disableSubmitButton();
     } else {
-        this._enableSubmitButton();
+        this.enableSubmitButton();
     }
 }
 
-enableValidation() { // публичный метод enableValidation, который включает валидацию формы.
-    this._formElement.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-      });
+// публичный метод enableValidation, который включает валидацию формы.
+enableValidation() { 
     this._setEventListeners();
     }
-
-  // метод для очистки ошибок и управления кнопкой
-resetValidation() {
-    this.toggleButtonState(); 
-    this._inputList.forEach((inputElement) => {
-    this._hideInputError(inputElement) 
-    });
-  }
 }

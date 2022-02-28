@@ -38,8 +38,8 @@ const generateCard = (item) => {
 const defaultCardList = new Section(
   {
     items: initialCards,
-    renderer: (items) => {
-      const cardElement = generateCard(items);
+    renderer: (item) => {
+      const cardElement = generateCard(item);
       defaultCardList.addItem(cardElement);
     },
   },
@@ -49,6 +49,7 @@ defaultCardList.renderItems();
 
 //Класс UserInfo отвечает за управление отображением информации о пользователе на странице
 const userInfo = new UserInfo({ profileName, profession });
+const data = userInfo.getUserInfo();
 
 //Для каждого попапа создавайте свой экземпляр класса PopupWithForm.
 //Добавление карточки
@@ -56,7 +57,7 @@ const AddMesto = new PopupWithForm({
   popupSelector: '.popup_mesto',
   handleSubmit: (item) => {
     defaultCardList.addItem(generateCard(item));
-    AddMesto.close();
+    AddMesto.closePopup();
   },
 });
 AddMesto.setEventListeners();
@@ -65,8 +66,8 @@ AddMesto.setEventListeners();
 //Редактирование профиля
 const EditProfile = new PopupWithForm({
   popupSelector: '.popup_profile',
-  handleSubmit: (item) => {
-    userInfo.setUserInfo(item.name, item.about);
+  handleSubmit: (item) => { 
+    userInfo.setUserInfo(item.userName, item.userJob);
     EditProfile.close();
   },
 });
@@ -80,18 +81,16 @@ formValidProfile.enableValidation();
 
  // открытие попапа редактирования профиля
  editProfileBtn.addEventListener('click', () => {
-  const data = userInfo.getUserInfo();
   nameInput.value = data.name;
   jobInput.value = data.description;
-  formValidProfile.resetValidation();
+  formValidProfile.disableSubmitButton();
   EditProfile.open();
 });
 
 // открытие попапа добавления карточки
 addMestoBtn.addEventListener('click', () => {
-  formValidMesto.resetValidation();
   AddMesto.open();
-  formValidMesto.toggleButtonState();
+  formValidMesto.disableSubmitButton();
 });
 
 

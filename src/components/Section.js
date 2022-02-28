@@ -15,7 +15,7 @@ export default class Section {
   }
 //Содержит публичный метод addItem, который принимает DOM-элемент и добавляет его в контейнер
 //получает разметку через функцию-колбэк и вставляет её в контейнер.
-  addItem(element) {
-    this._container.append(element);//Добавляем карточку в конце массива 
+  addItem(popup_image) {
+    this._container.append(popup_image);//Добавляем карточку в конце массива 
   }
 }
