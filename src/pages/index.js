@@ -40,7 +40,7 @@ const defaultCardList = new Section(
     items: initialCards,
     renderer: (item) => {
       const cardElement = generateCard(item);
-      defaultCardList.addItem(cardElement);
+      defaultCardList.prependItem(cardElement);
     },
   },
   elements
@@ -49,29 +49,29 @@ defaultCardList.renderItems();
 
 //Класс UserInfo отвечает за управление отображением информации о пользователе на странице
 const userInfo = new UserInfo({ profileName, profession });
-const data = userInfo.getUserInfo();
+
 
 //Для каждого попапа создавайте свой экземпляр класса PopupWithForm.
 //Добавление карточки
-const AddMesto = new PopupWithForm({
+const addMesto = new PopupWithForm({
   popupSelector: '.popup_mesto',
   handleSubmit: (item) => {
-    defaultCardList.addItem(generateCard(item));
-    AddMesto.closePopup();
+    defaultCardList.prependItem(generateCard(item));
+    addMesto.closePopup();
   },
 });
-AddMesto.setEventListeners();
+addMesto.setEventListeners();
 
 //Для каждого попапа создавайте свой экземпляр класса PopupWithForm.
 //Редактирование профиля
-const EditProfile = new PopupWithForm({
+const editProfile = new PopupWithForm({
   popupSelector: '.popup_profile',
   handleSubmit: (item) => { 
     userInfo.setUserInfo(item.userName, item.userJob);
-    EditProfile.close();
+    editProfile.close();
   },
 });
-EditProfile.setEventListeners();
+editProfile.setEventListeners();
 
 //Валидация
 const formValidMesto = new FormValidator(config, formMesto);  
@@ -80,16 +80,17 @@ const formValidProfile = new FormValidator(config, formProfile);
 formValidProfile.enableValidation();
 
  // открытие попапа редактирования профиля
- editProfileBtn.addEventListener('click', () => {
+  editProfileBtn.addEventListener('click', () => {
+  const data = userInfo.getUserInfo();
   nameInput.value = data.name;
   jobInput.value = data.description;
   formValidProfile.disableSubmitButton();
-  EditProfile.open();
+  editProfile.open();
 });
 
 // открытие попапа добавления карточки
-addMestoBtn.addEventListener('click', () => {
-  AddMesto.open();
+  addMestoBtn.addEventListener('click', () => {
+  addMesto.open();
   formValidMesto.disableSubmitButton();
 });
 

@@ -2,10 +2,10 @@ export default class Section {
   //items — это массив данных, 
   //которые нужно добавить на страницу при инициализации класса.
   // Свойство renderer — это функция, которая отвечает за создание и отрисовку данных на странице.
-  constructor({ items, renderer }, containerSelector) {
+  constructor({ items, renderer }, container) {
     this._renderedItems = items;
     this._renderer = renderer;
-    this._container = containerSelector;
+    this._container = container;
   }
 //Содержит публичный метод, который отвечает за отрисовку всех элементов.
   renderItems() {
@@ -15,7 +15,7 @@ export default class Section {
   }
 //Содержит публичный метод addItem, который принимает DOM-элемент и добавляет его в контейнер
 //получает разметку через функцию-колбэк и вставляет её в контейнер.
-  addItem(popup_image) {
-    this._container.append(popup_image);//Добавляем карточку в конце массива 
+  prependItem(elements) {
+    this._container.prepend(elements);//Добавляем карточку в конце массива 
   }
 }

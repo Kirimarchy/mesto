@@ -8,9 +8,9 @@ export class FormValidator {  //принимает в конструктор о�
         this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); 
         this._buttonElement = this._formElement.querySelector(this._submitButtonSelector); 
     }
-    //имеет приватные методы, которые обрабатывают форму:
+   //имеет приватные методы, которые обрабатывают форму:
   //проверяют валидность поля, изменяют состояние кнопки сабмита, 
-  //устанавливают все обработчики;
+ //устанавливают все обработчики;
 
     _showInputError(inputElement) {
         const errorElement = this._formElement.querySelector(`#${inputElement.id}Error`);
@@ -64,7 +64,6 @@ export class FormValidator {  //принимает в конструктор о�
         this._buttonElement.classList.remove(this._inactiveButtonClass);  
     };
 
-
    //Переключатель кнопки сабмита
 _toggleButtonState(inputList) {
     if (this._hasInvalidInput(inputList)) {
@@ -79,3 +78,10 @@ enableValidation() {
     this._setEventListeners();
     }
 }
+/*resetValidation() {
+    this._toggleButtonState(); //управляем кнопкой 
+    this._inputList.forEach((inputElement) => {
+    this._hideInputError(inputElement) //очищаем ошибки
+    });
+  }
+}*/
