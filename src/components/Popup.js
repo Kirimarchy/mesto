@@ -5,6 +5,7 @@ export default class Popup {
     this._popup = document.querySelector(popupSelector);
     this.close = this.close.bind(this);
     this._handleEscClose = this._handleEscClose.bind(this);
+    this._popupSaveBtn = this._popup.querySelector('.popup__button_submit');
   }
 
 //Содержит публичные методы open и close, которые отвечают за открытие и закрытие попапа.
@@ -34,5 +35,16 @@ export default class Popup {
       this.close();
     }
   };
+// метод загрузки  'Сохранение...'
+isLoading(isLoading) {
+  if (isLoading) {
+    this._popupSaveBtn.textContent = "Сохранение...";
+  } else if (this._popupSelector === '.popup_mesto') {
+    this._popupSave = "Создать";
+  } else {
+    this._popupSaveBtn.textContent = "Сохранить";
+  }
+ }
 }
+
 

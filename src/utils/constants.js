@@ -44,24 +44,58 @@ export const config = {
   //Form
 export const formProfile = document.querySelector('.popup__form_profile');
 export const formMesto = document.querySelector('.popup__form_mesto');
+export const formAvatar = document.querySelector('popup__form_avatar');
 
   //Buttons
 export const editProfileBtn = document.querySelector('.profile__edit-button');
 export const addMestoBtn = document.querySelector('.profile__add-button');
+export const avatarEditButton = document.querySelector('.profile__block-img');
 
 //Inputs
-export const profileName = document.querySelector('.profile__title');
+//export const profileName = document.querySelector('.profile__title');
 export const nameInput = formProfile.querySelector('.popup__input_type_name');
-export const profession = document.querySelector('.profile__subtitle');
+//export const profileDescription = document.querySelector('.profile__subtitle');
 export const jobInput = formProfile.querySelector('.popup__input_type_work');
-export const imageName = document.querySelector('.popup__input_image_name');
-export const imageSrc = document.querySelector('.popup__input_image_src');
+//export const imageName = document.querySelector('.popup__input_image_name');
+//export const imageSrc = document.querySelector('.popup__input_image_src');
 
 //Template
 export const elements = document.querySelector('.elements');
+export const popupData = {
+  buttonClose: '.popup__btn_close',
+  openedClass: '.popup_opened',
+};
 
-//Popup
-export const popups = document.querySelectorAll('.popup');
-export const profilePopup = document.querySelector('.popup_profile');
-export const mestoPopup = document.querySelector('.popup_mesto');
+export const popupSelectors = {
+  viewCard: '.popup_image',
+  createCard: '.popup_mesto',
+  editProfile: '.popup_profile',
+  changeAvatar: '.popup_avatar',
+  confirm: '.popup_confirm',
+};
+
+export const imageData = {
+  imageSelector: '.figure__image',
+  captionSelector: '.figure__caption',
+};
+
+//export const renderItems = '.profile__edit-button';
+//export const btnNewCardSelector = '.profile__add-button';
+
+export const formData = {
+  form: config.formSelector,
+  input: config.inputSelector,
+};
+
+export const cardTemplateSelector = '.element-template';
+
+export const profileData = {
+  nameSelector: '.profile__title',
+  infoSelector: '.profile__subtitle',
+  avatarSelector: '.profile__avatar',
+};
+
+
+//Popup export const popups = document.querySelectorAll('.popup');
+
 

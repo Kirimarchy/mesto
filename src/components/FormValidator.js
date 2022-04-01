@@ -5,8 +5,9 @@ export class FormValidator {  //принимает в конструктор о�
         this._submitButtonSelector = config.submitButtonSelector;
         this._inactiveButtonClass = config.inactiveButtonClass;
         this._errorClass = config.errorClass;                                                
-        this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector)); 
+        this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
         this._buttonElement = this._formElement.querySelector(this._submitButtonSelector); 
+        console.log(this._inputList);
     }
    //имеет приватные методы, которые обрабатывают форму:
   //проверяют валидность поля, изменяют состояние кнопки сабмита, 
@@ -14,19 +15,19 @@ export class FormValidator {  //принимает в конструктор о�
 
     _showInputError(inputElement) {
         const errorElement = this._formElement.querySelector(`#${inputElement.id}Error`);
-        inputElement.classList.add(this._inputErrorClass);
-        errorElement.classList.add(this._errorClass);
-        errorElement.textContent = inputElement.validationMessage;
+        inputElement.classList.add(this._inputErrorClass); // добавляем класс ошибки
+        errorElement.classList.add(this._errorClass);  // добавляем класс который делает  ошибку
+        errorElement.textContent = inputElement.validationMessage; // выводим сообщение об ошибке (встроенные ошибки браузера))
         }
     
     _hideInputError(inputElement) {
         const errorElement = this._formElement.querySelector(`#${inputElement.id}Error`);
-        inputElement.classList.remove(this._inputErrorClass);
-        errorElement.classList.remove(this._errorClass);
-        errorElement.textContent = '';
+        inputElement.classList.remove(this._inputErrorClass);  // удаляем класс ошибки
+        errorElement.classList.remove(this._errorClass); // удаляем класс который делает  ошибку
+        errorElement.textContent = ''; // текст ошибки пустой
     }
 
-    // Функция принимает массив полей
+    // Функция принимает массив полей и проверяет, все ли поля прошли валидацию
   _hasInvalidInput() {
     // проходим по этому массиву методом some, Если поле не валидно, колбэк вернёт true
     return this._inputList.some((inputElement) => {
@@ -46,10 +47,11 @@ export class FormValidator {  //принимает в конструктор о�
 
    //обработчик форм
     _setEventListeners() {
+      
           this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
                 this._checkInputValidity(inputElement);    
-                  this._toggleButtonState(this._inputList);
+                  this.toggleButtonState();
             });
         });
     }
@@ -59,29 +61,32 @@ export class FormValidator {  //принимает в конструктор о�
           this._buttonElement.classList.add(this._inactiveButtonClass);
         }
  // активация кнопки сохранить при успешном прохождении валидации
-    enableSubmitButton() {
+    _enableSubmitButton() {
         this._buttonElement.disabled = false;
         this._buttonElement.classList.remove(this._inactiveButtonClass);  
     };
 
    //Переключатель кнопки сабмита
-_toggleButtonState(inputList) {
-    if (this._hasInvalidInput(inputList)) {
+toggleButtonState() {
+    if (this._hasInvalidInput()) {
         this.disableSubmitButton();
     } else {
-        this.enableSubmitButton();
+        this._enableSubmitButton();
     }
 }
 
 // публичный метод enableValidation, который включает валидацию формы.
-enableValidation() { 
+enableValidation()  {
+    this._formElement.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+    });
     this._setEventListeners();
-    }
-}
-/*resetValidation() {
-    this._toggleButtonState(); //управляем кнопкой 
+  }
+
+ resetValidation() {
+    this.toggleButtonState(); //управляем кнопкой 
     this._inputList.forEach((inputElement) => {
     this._hideInputError(inputElement) //очищаем ошибки
     });
   }
-}*/
+}

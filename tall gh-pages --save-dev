@@ -1,0 +1,527 @@
+[33mcommit f696ce292e88b41299047987ea7f093d40d92b10[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Tue Mar 1 10:59:38 2022 +0300
+
+    iteration2
+
+[33mcommit e6c6b2449700c53787c78cbbdccc6a1913c72eec[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Feb 28 13:46:47 2022 +0300
+
+    fixed webpack
+
+[33mcommit 61e0a709f5c8a653d66135b7f504b68e11d4c833[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Feb 28 13:41:17 2022 +0300
+
+    fixed
+
+[33mcommit c85c127f1f834dcb8652dd49cea131ae746811a9[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sun Feb 27 11:16:01 2022 +0300
+
+    Webpack
+
+[33mcommit a9608255f2ef0c9d75aeb4ee24e3a02e765da70c[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sat Feb 5 11:52:43 2022 +0300
+
+    fix
+
+[33mcommit 9cbcf66d7d824eda8ec56d455a5ad84964718872[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Feb 3 19:51:23 2022 +0300
+
+    refac
+
+[33mcommit e8da98cebc9087106ad213b7cf906f40529c4049[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Jan 31 22:01:00 2022 +0300
+
+    ООП
+
+[33mcommit e23ffbf00e59e6e6264c2efacde33480be6a52ee[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Wed Jan 19 16:27:11 2022 +0300
+
+    fixed3
+
+[33mcommit ff6985d49d1798e0ea3bc77b33d95e222a92ea4e[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Tue Jan 18 22:49:15 2022 +0300
+
+    fixed validation form
+
+[33mcommit 8a90aa177a4d563cd7804eaffa6582855bc3fa57[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Tue Jan 18 09:57:21 2022 +0300
+
+    fixed
+
+[33mcommit 7561038e5871e731af5c22b5000d01f986ac8522[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Jan 17 22:20:04 2022 +0300
+
+    ref
+
+[33mcommit 96828c6128d3172e35a72f725b00c11dac046aa3[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Jan 17 19:48:27 2022 +0300
+
+    refactoring
+
+[33mcommit a84bb34ea638ded63ba6098c6a76cf6defdbc3f5[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sun Jan 16 21:59:37 2022 +0300
+
+    input
+
+[33mcommit aefc9ef0ca291dccf697c3726958855ab27dd6ac[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sun Jan 16 19:05:05 2022 +0300
+
+    inputErrorClass
+
+[33mcommit 5606ef4edda88ec48b47997ee7ccd0101da4c678[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sun Jan 16 10:48:38 2022 +0300
+
+    toggleButton
+
+[33mcommit 4827ab6e7a3746f4a1b26c967c835252285a840b[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sun Jan 16 10:43:38 2022 +0300
+
+    errorElement
+
+[33mcommit 8b399f7d3612532211fb9bc7c7c3339957dd1f62[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sat Jan 15 12:21:19 2022 +0300
+
+    js
+
+[33mcommit 2544850e079f66a88d2994e98cc6af475d23c657[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Fri Jan 14 23:59:44 2022 +0300
+
+    valid
+
+[33mcommit 2229b2d6af3d4bfe72293c84f4f9c5c5e58e1512[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Fri Jan 14 09:54:11 2022 +0300
+
+    js
+
+[33mcommit cb1b6c1400549d5246279a7c8ab418b583a07de1[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Fri Jan 14 09:45:07 2022 +0300
+
+    popup__button
+
+[33mcommit 5fbba56a8f26e95e7d7cb81d71277d8ee1f21606[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Jan 13 23:35:43 2022 +0300
+
+    validation
+
+[33mcommit 43dc1c2ae1b563d0ee0ac378291d8e01adc2a215[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Jan 13 22:57:17 2022 +0300
+
+    validity
+
+[33mcommit a01643166a19c348ed8ad5f992971555f49a5203[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Jan 13 22:21:01 2022 +0300
+
+    valid
+
+[33mcommit 770bd179692419bfdce440802f9f9e2c708fc8a4[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Jan 13 15:47:49 2022 +0300
+
+    CloseEsc
+
+[33mcommit 5df3c60dc48cbb153783de130a7085ef847fb6f6[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Jan 13 15:37:30 2022 +0300
+
+    setEsclistener
+
+[33mcommit 6a3910384f7d87c83a25643a3ecdb0df10595425[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Jan 13 14:35:44 2022 +0300
+
+    validation
+
+[33mcommit 7b8a98ad3a72b3d045f265aa0c845abfabb08f2e[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Jan 6 22:42:26 2022 +0300
+
+    submit
+
+[33mcommit 2aa8e4220bdc58abc7cb871e2e7f4156be01c766[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Jan 6 00:00:27 2022 +0300
+
+    js fix
+
+[33mcommit bc4bb15ef69352562ebf96603a40550fff881d6c[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Wed Jan 5 01:02:23 2022 +0300
+
+    importJS
+
+[33mcommit 84362f76a88d9ae4a9cc0f760d148e88dec5b7ae[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Tue Jan 4 23:55:41 2022 +0300
+
+    module
+
+[33mcommit 4fa1725d4e06a3e2ff120c66de3aab7b3d1037d8[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Tue Jan 4 22:55:19 2022 +0300
+
+    imageOpen
+
+[33mcommit f7d48d11152209f4805c96bfcb94054228b4aa8b[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Tue Jan 4 22:47:57 2022 +0300
+
+    createCard
+
+[33mcommit d6d1f5fcb457c35cdb3096a3bcc9508855bbe01b[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Tue Jan 4 20:39:38 2022 +0300
+
+    js
+
+[33mcommit b544e7f9eb0fdb0c052e38aef7687c6c90bc8a2e[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Tue Jan 4 16:45:51 2022 +0300
+
+    formProfile
+
+[33mcommit 80eeba9ad57598a646b3aff6a1422c33b7a569b1[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Tue Jan 4 16:32:50 2022 +0300
+
+    profilePopup
+
+[33mcommit 0462c1bb6b90f3615e023e6cd067c799f6f5b35d[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Tue Jan 4 16:25:47 2022 +0300
+
+    formname
+
+[33mcommit 15d7fdc4547e7d05c5603da2d5260dbc272ab2ea[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Tue Jan 4 16:19:56 2022 +0300
+
+    template
+
+[33mcommit cc032603c6a19ae260c0e06589a0ad21e973b9e3[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Tue Jan 4 12:00:44 2022 +0300
+
+    element__image:hover
+
+[33mcommit eaea39c5b63c5066f47ad6c84ba41bc9ea8a9118[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Jan 3 22:32:43 2022 +0300
+
+    template
+
+[33mcommit 6148ec17ac2e74cdb389cc53ff7725f38bbfa2a2[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Jan 3 20:11:57 2022 +0300
+
+    BEM
+
+[33mcommit 54136ac3cace1d0b85e5487a22722b7857f290e8[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Jan 3 19:57:53 2022 +0300
+
+    popup__title
+
+[33mcommit 49882d1f50c8bb6b9a70a47c2ae9ddbbba75e90e[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Jan 3 19:44:23 2022 +0300
+
+    BEM
+
+[33mcommit 37dca662c85d9bd47b7c75f819e361b920f100bc[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Jan 3 18:49:31 2022 +0300
+
+    index src
+
+[33mcommit 127d1d9759c562fe65fe7ebf61dff083cb855189[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Jan 3 18:41:59 2022 +0300
+
+    index
+
+[33mcommit 133a2e7c04c1391286e3334a9673f1f9a8cda853[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Jan 3 18:31:21 2022 +0300
+
+    css popup
+
+[33mcommit 783172a2a07cf35f9a03eab53e2df923fdfc8300[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Jan 3 17:52:56 2022 +0300
+
+    css
+
+[33mcommit 7bad05f44acc4324eb597bee67f543077f0fb06a[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Jan 3 16:51:55 2022 +0300
+
+    popup_image
+
+[33mcommit 34c3421531270b61114aaca87437eed8486404a0[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Jan 3 16:45:51 2022 +0300
+
+    addEventToImage
+
+[33mcommit aac333332de02158bf63cff20e473869c40ddf5b[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Jan 3 13:18:50 2022 +0300
+
+    imageTitle
+
+[33mcommit e0700050b8fab42aacc9d25c3770f9e24fd1ad27[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sat Jan 1 18:55:34 2022 +0300
+
+    title__opened
+
+[33mcommit e9b9ad76c05c38d6b1a416c4dd9b85ac89043b75[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sat Jan 1 11:58:22 2022 +0300
+
+    comments
+
+[33mcommit 2dcdb7bd7d3775c1dbb782300aac6021769557a5[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sat Jan 1 11:52:27 2022 +0300
+
+    alt
+
+[33mcommit 543d0006372eab9891fa5e4084a9886c1828ac2e[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Dec 30 20:22:18 2021 +0300
+
+    js
+
+[33mcommit 2fe410e4fe997cc8812bfbe3a16adbf31c066537[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Wed Dec 29 21:30:18 2021 +0300
+
+    title
+
+[33mcommit 8f2fd05a8d62c4db761461dfb4c23a4888790cc8[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Wed Dec 29 21:00:39 2021 +0300
+
+    ClosePopup
+
+[33mcommit 8ba3336930d82e2c9e04eb5775cec0f03d18fd6b[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Wed Dec 29 20:55:22 2021 +0300
+
+    closeImagebtn
+
+[33mcommit 83d925820da673b8c8b5c418845d2ec6471ff1a0[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Wed Dec 29 20:18:46 2021 +0300
+
+    index
+
+[33mcommit aae850859f8595549a234ba2e9bd355a661918c1[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Wed Dec 29 07:50:11 2021 +0300
+
+    imageopen
+
+[33mcommit 747ab226600abf7555e297c99e9ecd3cb3256875[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Wed Dec 29 07:01:02 2021 +0300
+
+    imageopened
+
+[33mcommit 1537cbcc417cd6cf17623efc69f7a6c212d31d05[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Tue Dec 28 20:57:59 2021 +0300
+
+    js
+
+[33mcommit fc2bf50ee080d1209fdb3211ba820745555141b1[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Dec 27 21:24:18 2021 +0300
+
+    imageOpen
+
+[33mcommit baa0b18cf01ebe0573cd214f0dfa8e3680f34ca2[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sat Dec 25 17:30:03 2021 +0300
+
+    delete
+
+[33mcommit 3f31f79758b306f0ac04cf0c950161fa01eb9c5b[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sat Dec 25 17:17:37 2021 +0300
+
+    like
+
+[33mcommit bbce63c8bbdad5f3df371cb00b74a4bb2c0e6f0c[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Dec 23 20:11:41 2021 +0300
+
+    js
+
+[33mcommit 7e7fdd5349494879ae96676b07e03e22fae710c2[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Dec 23 08:26:41 2021 +0300
+
+    deleteLike
+
+[33mcommit c197e29edcb10d9b24fe08b2908a4662dadbad7b[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Wed Dec 22 20:27:58 2021 +0300
+
+    element__delete
+
+[33mcommit 38a07671e9d8345264c3c98b539f88310cefc6df[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sun Dec 19 17:49:27 2021 +0300
+
+    js
+
+[33mcommit b5b815d44ec9403e3c038b2862e2ee882cd9dbce[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sat Dec 18 23:59:37 2021 +0300
+
+    index
+
+[33mcommit 7e6b96967953c4705b30cd2d1da5f15c307d93b6[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sat Dec 18 22:51:05 2021 +0300
+
+    js
+
+[33mcommit 8a1c7d8c4345947e25e5bd3c56b6838d44799bf2[m[33m ([m[1;32mmestomodal[m[33m)[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Dec 16 18:01:34 2021 +0300
+
+    modalmesto
+
+[33mcommit 11790ff8e8a10fee8a0fb7abd2b22a95b397c17b[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Dec 9 16:27:43 2021 +0300
+
+    popup
+
+[33mcommit cb4f9c8bb90822239a52aa3f3340f6308b6add2e[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Wed Dec 8 18:56:22 2021 +0300
+
+    popup320
+
+[33mcommit b78ac756eb2ea02bdbccf23bc9328ed72d3cb51e[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Tue Dec 7 20:23:35 2021 +0300
+
+    popup
+
+[33mcommit cc247afddd1fb3748d4b9e7820c129cd46387a5b[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Mon Dec 6 19:32:19 2021 +0300
+
+    fix
+
+[33mcommit d0448a20588142951eb8eba954672385060b542f[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sun Dec 5 21:18:04 2021 +0300
+
+    img
+
+[33mcommit c9a46064ed9b0bc12b607c634763031d0bd5405d[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sun Dec 5 21:10:27 2021 +0300
+
+    img
+
+[33mcommit 99ba9a8b25eca43c0b9d02ee16dd253073394a00[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sun Dec 5 21:07:49 2021 +0300
+
+    img
+
+[33mcommit 23bbc4b4a740da9d6ef90821f41429541a0108f8[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sun Dec 5 20:52:17 2021 +0300
+
+    newreadmy
+
+[33mcommit 59fae544fa7bccc2d6be701539eb51be8cf9faf7[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sun Dec 5 20:50:51 2021 +0300
+
+    readmy
+
+[33mcommit d6b8b621654f76c83a70b2a42a1791bb66d023e5[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sun Dec 5 20:47:10 2021 +0300
+
+    fix
+
+[33mcommit 5803750247ec3ffc5c5ba29f8868ee15b3220fa7[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sun Dec 5 20:14:10 2021 +0300
+
+    fix2
+
+[33mcommit f99f58d1c6305147d03a2cd7924ea8344721b34a[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sat Dec 4 20:24:14 2021 +0300
+
+    like
+
+[33mcommit b5c3730a100dcab45c810b6cae9bea972ecdb9b3[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sat Dec 4 19:31:39 2021 +0300
+
+    fix
+
+[33mcommit a52c443b38a924bddd27203f5c8a9421268bbd2e[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Sat Dec 4 19:19:50 2021 +0300
+
+    hotfix
+
+[33mcommit 58becc1930f9167a22df2c91fb18416e644340b3[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Dec 2 12:40:53 2021 +0300
+
+    index
+
+[33mcommit 40455af18f0dbc2519d3625bba8cdc58399f16d4[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Dec 2 12:15:24 2021 +0300
+
+    README
+
+[33mcommit 8f400d4a3064047dd9ece38f46900aa3d149c886[m
+Author: Marianna Kaledina <kamariann@yandex.ru>
+Date:   Thu Dec 2 12:02:56 2021 +0300
+
+    indexcssjs
+
+[33mcommit a81afd8ed23d603a7ba9d7bb126f138457397edb[m
+Author: Kirimarchy <92118397+Kirimarchy@users.noreply.github.com>
+Date:   Sat Nov 27 20:38:53 2021 +0300
+
+    Initial commit

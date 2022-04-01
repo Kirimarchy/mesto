@@ -1,11 +1,13 @@
 .profile__block {
-  display: flex;
-  align-items: center;
+  margin-right: 27px;
+  position: relative;
+  border-radius: 50%;
 }
 
-@media (max-width: 475px) {
+@media (max-width: 640px) {
   .profile__block {
-    flex-direction: column;
-    justify-content: center;
+    max-width: 100px;
+    width: 100%;
+    margin: auto;
   }
 }
