@@ -43,7 +43,7 @@ const generateCard = (item) => {
       imageForm.open(item.name, item.link);// Передаем метод открытия popup
     },
   // удаление карточки, открытие попапа, появление кнопки удаления если карточка моя
-  handkeDeleteCardClik: (card) => {
+  handleDeleteCardClick: (card) => {
     popupDeleteCard.open();
     popupDeleteCard.setSubmitCallback(() => {
       api
