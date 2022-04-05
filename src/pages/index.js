@@ -82,7 +82,7 @@ const generateCard = (item) => {
     }
   },
 });
-return card.renderCard();
+return card.createCard();
 };
 
 
@@ -206,7 +206,7 @@ formValidAvatar.enableValidation();
   const data = userInfo.getUserInfo();
   nameInput.value = data.name;
   jobInput.value = data.description;
-  formValidProfile.disableSubmitButton();
+  formValidProfile.resetValidation();
   editProfile.open();
 });
 
@@ -214,7 +214,7 @@ formValidAvatar.enableValidation();
   addMestoBtn.addEventListener('click', () => {
   formValidMesto.resetValidation();
   addMesto.open();
-  formValidMesto.toggleButtonState();
+  //formValidMesto.toggleButtonState();
 });
 
 

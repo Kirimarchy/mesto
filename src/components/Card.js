@@ -52,12 +52,12 @@ class Card {
   });
 
    // Лайк карточки
-   this._likeButton.addEventListener("click", () => {
+   this._likeButton.addEventListener('click', () => {
     this._handleLikeClick(this);
   });
 
   // Открытие попапа карточки
-  this._cardImage.addEventListener("click", () => {
+  this._cardImage.addEventListener('click', () => {
     this._openPopupWithImage();
   });
 }

@@ -4,10 +4,10 @@ export class FormValidator {  //принимает в конструктор о�
         this._inputSelector = config.inputSelector;
         this._submitButtonSelector = config.submitButtonSelector;
         this._inactiveButtonClass = config.inactiveButtonClass;
-        this._errorClass = config.errorClass;                                                
+        this._errorClass = config.errorClass;
+        this._inputErrorClass = config.inputErrorClass;                                             
         this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
         this._buttonElement = this._formElement.querySelector(this._submitButtonSelector); 
-        console.log(this._inputList);
     }
    //имеет приватные методы, которые обрабатывают форму:
   //проверяют валидность поля, изменяют состояние кнопки сабмита, 

@@ -3,7 +3,8 @@ export class UserInfo {
   constructor({ profileName, profileDescription, profileAvatar}) {
     this._profileName = profileName;
     this._profileDescription = profileDescription;
-    this._profileAvatar = document.querySelector(profileAvatar);
+    //this._profileAvatar = document.querySelector(profileAvatar);
+    this._profileAvatar = profileAvatar;
   }
 
   //Содержит публичный метод getUserInfo,
@@ -13,17 +14,13 @@ export class UserInfo {
     return {
       name: this._profileName.textContent,
       description: this._profileDescription.textContent,
-      //avatar: this._profileAvatar
     };
   }
 
   // Содержит публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
   setUserInfo(item) {
-    this._name.textContent = item.name;
-    this._description.textContent = item.description;
+    this._profileName.textContent = item.name;
+    this._profileDescription.textContent = item.description;
+    this._profileAvatar.src = item.avatar;
   }
-
-setUserAvatar(item) {
-  this._avatar.src = item.avatar;
-}
 }
