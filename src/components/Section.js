@@ -2,8 +2,9 @@ export default class Section {
   //items — это массив данных, 
   //которые нужно добавить на страницу при инициализации класса.
   // Свойство renderer — это функция, которая отвечает за создание и отрисовку данных на странице.
-  constructor({ renderer }, container) {
+  constructor({ renderer }, items, container) {
     this._renderer = renderer;
+    this._items = items;
     this._container = container;//CSS-селектор контейнера. В него мы будем вставлять элементы разметки
   }
 //Содержит публичный метод, который отвечает за отрисовку всех элементов.

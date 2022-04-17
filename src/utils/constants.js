@@ -44,7 +44,7 @@ export const config = {
   //Form
 export const formProfile = document.querySelector('.popup__form_profile');
 export const formMesto = document.querySelector('.popup__form_mesto');
-export const formAvatar = document.querySelector('popup__form_avatar');
+export const formAvatar = document.querySelector('.popup__form_avatar');
 
   //Buttons
 export const editProfileBtn = document.querySelector('.profile__edit-button');

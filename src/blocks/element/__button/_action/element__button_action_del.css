@@ -14,6 +14,10 @@
   position: absolute;
 }
 
+.element__button_action_del.hide {
+
+}
+
 .element__button_action_del:hover {
   opacity: 0.5;
   transition: all 0.5s ease-out;
