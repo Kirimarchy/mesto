@@ -48,7 +48,7 @@ export const formAvatar = document.querySelector('.popup__form_avatar');
 
   //Buttons
 export const editProfileBtn = document.querySelector('.profile__edit-button');
-export const addMestoBtn = document.querySelector('.profile__add-button');
+export const addMestoBtn = document.querySelector('.profile__add-image');
 export const avatarEditButton = document.querySelector('.profile__block-img');
 
 //Inputs

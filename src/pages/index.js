@@ -207,7 +207,7 @@ editProfileBtn.addEventListener('click', () => {
     const data = userInfo.getUserInfo();
     nameInput.value = data.name;
     jobInput.value = data.description;
-    formValidProfile.disableSubmitButton();
+    formValidProfile.resetValidation();
     editProfile.open();
 });
 
