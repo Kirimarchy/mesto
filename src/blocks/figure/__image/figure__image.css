@@ -1,5 +1,6 @@
 .figure__image {
-  margin: 0;
+  margin: auto;
+  display: flex; 
   max-width: 75vw;
   max-height: 75vh;
 }

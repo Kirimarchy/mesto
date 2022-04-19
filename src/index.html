@@ -90,7 +90,7 @@
           <form action = "post" class="popup__form popup__form_avatar" name="form" novalidate>
             <h2 class="popup__title">Обновить аватар</h2>
             <label class="popup__field">
-          <input class="popup__input popup__input_avatar" id ="avatar" placeholder="Ссылка на картинку" type="url" required>
+          <input class="popup__input popup__input_avatar" id="avatar" name="avatar" placeholder="Ссылка на картинку" type="url" required>
           <span class='popup__error' id="avatarInputError"></span>
           </label>
           <button class="popup__button popup__button_submit popup__button_disabled" type="submit" name="save">
@@ -138,12 +138,12 @@
     <template class="element-template">
       <div class="element">
         <img class="element__image" src ="#" alt=""/>
-        <button class="" type="button"></button>
         <div class="element__text">
             <h2 class="element__title"></h2>
-            <div class="element__like-group"></div>
-            <button class="element__button element__button_clicked" aria-label="Мне нравится" type="button"></button>
-           <p class="element__like-counter">0</p>
+            <div class="element__like-group">
+                <button class="element__button element__button_clicked" aria-label="Мне нравится" type="button"></button>
+                <p class="element__like-counter"></p>
+            </div>
            <button type="button" class="element__button element__button_action_del" title="Удалить"></button>
         </div>
       </div>
