@@ -4,7 +4,7 @@ export default class Popup {
   constructor(popupSelector) {                           
     this._popup = document.querySelector(popupSelector);
     this.close = this.close.bind(this);
-    this._handleEscClose = this._handleEscClose.bind(this);
+    this._handleEscClose = this._handleEscClose.bind(this);// метод bind не взвает, а возвращает функцию
     this._popupSaveBtn = this._popup.querySelector('.popup__button_submit');
   }
 

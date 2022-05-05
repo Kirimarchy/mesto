@@ -1,5 +1,5 @@
 import Popup from './Popup.js';
-
+//наследуется от класса Popup
 //Кроме селектора попапа принимает в конструктор колбэк сабмита формы.
 export class PopupWithForm extends Popup {
     constructor({popupSelector, handleSubmit}) {

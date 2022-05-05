@@ -76,7 +76,7 @@ toggleButtonState() {
 
 // публичный метод enableValidation, который включает валидацию формы.
 enableValidation()  {
-    this._formElement.addEventListener("submit", (evt) => {
+    this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
     this._setEventListeners();

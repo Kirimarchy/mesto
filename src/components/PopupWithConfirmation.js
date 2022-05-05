@@ -1,5 +1,7 @@
 import Popup from './Popup.js';
-
+// наследуется от класса Popup
+//вызывать функцию при сабмите. 
+//Соответственно никаких других методов у этого попапа не будет, так как нет формы которую надо валидировать.
 export default class PopupWithConfirmation extends Popup {
   constructor(popupSelector) {
     super(popupSelector);

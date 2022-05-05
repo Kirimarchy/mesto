@@ -1,5 +1,6 @@
  //Создайте класс PopupWithImage, который наследует от Popup
 import Popup from './Popup.js';
+//наследуется от класса Popup
 export class PopupWithImage extends Popup {
   constructor(selector, classes, { imageSelector, captionSelector }) {
     super(selector, classes);

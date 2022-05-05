@@ -3,6 +3,7 @@ class Card {
     //содержит приватные методы, которые работают с разметкой, устанавливают слушателей событий;
     //содержит приватные методы для каждого обработчика;
     // Card принимает в конструктор функцию handleCardClick. Эта функция должна открывать попап с картинкой при клике на карточку.
+    //Чтобы выбирать из нескольких шаблонов, сделаем селектор частью конструктора класса
     constructor(data, userId, elementSelector, {handleCardClick, handleDeleteCardClick, handleLikeClick}) {
         this._name = data.name;// название карточки
         this._link = data.link; // ссылка на изображение
@@ -11,7 +12,7 @@ class Card {
         this._cardId = data._id;// id карточки
         this._ownerId = data.owner._id; // id владельца юзера добавившего эту карточку
         this._userId = userId;  // текущий пользватель
-        this._elementSelector = elementSelector; // селектор карточки
+        this._elementSelector = elementSelector; // // записали селектор в приватное поле
         this._handleCardClick = handleCardClick; // открыть карточку, попап
         this._handleDeleteCardClick = handleDeleteCardClick;  // удаление карточки
         this._handleLikeClick = handleLikeClick; // лайк карточки
@@ -23,22 +24,26 @@ class Card {
         this._currentUserId = userId;
     }
 
-    // Метод для выявления темплейта
-    _getTemplate() {
+    // здесь выполним все необходимые операции, чтобы вернуть разметку
+    //получаем готовую разметку перед размещением на страницу. Так мы отделим логику обработки разметки от логики публикации элемента.
+    //задача метода — вернуть разметку карточки через return
+    _getTemplate() { 
+          // вернём DOM-элемент карточки
         return document
-            .querySelector(this._elementSelector)    //Для каждой карточки создайте экземпляр класса Card
-            .content.querySelector('.element')
-            .cloneNode(true);
+            .querySelector(this._elementSelector)//найдёт template-элемент 
+            .content.querySelector('.element')//в содержимом найдёт элемент с классом
+            .cloneNode(true);// забираем разметку из HTML и клонируем элемент
+           
     }
 
     /* объявляем функцию createCard,
-    она будет возвращать новые объекты карточек */
+    подготовит карточку к публикации. */
     createCard() {
         // Добавим данные
         this._elementImage.src = this._link;
         this._elementImage.alt = this._name;
         this._element.querySelector('.element__title').textContent = this._name;
-        this._setEventListeners(); // добавляем обработчик
+        this._setEventListeners(); //метод создаст карточки уже с обработчиком.
         this._handleCardDeleteVisible(); // кнопка удаления
         this.updateLikes()// количество лайков
         // Вернём элемент наружу
@@ -46,8 +51,8 @@ class Card {
         return this._element;
     }
 
-
     //Метод добавляет все обработчики в одном месте
+    //Колбэк слушателя событий — стрелочная функция.
     _setEventListeners() {
         // Удаление карточки
         this._deleteButton.addEventListener('click', () => {

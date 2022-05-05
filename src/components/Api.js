@@ -1,3 +1,12 @@
+//получить список всех карточек в виде массива (GET)
+//добавить карточку (POST)
+//удалить карточку (DELETE)
+//получить данные пользователя (GET)
+//заменить данные пользователя (PATCH)
+//заменить аватар (PATCH)
+//“залайкать” карточку (PUT)
+//удалить лайк карточки (DELETE)
+
 export class Api {
     constructor({baseUrl, address, token}) {
         this._baseUrl = baseUrl;
@@ -8,11 +17,10 @@ export class Api {
 //обработчик ответа
     _getResponse(res) {
         if (res.ok) {
-            return res.json();
+            return res.json();//разбирает ответ как JSON;
         }
         return Promise.reject(`Error ${res.status}`);
-
-    }
+     }
 
     // получение данных профиля с сервера
     getUserInfo() {
