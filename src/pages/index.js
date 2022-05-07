@@ -1,4 +1,4 @@
-import './index.css';
+ import './index.css';
 import {
     initialCards,
     config,
@@ -105,9 +105,11 @@ popupDeleteCard.setEventListeners();
 const userInfo = new UserInfo(profileData);
 
 const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort36',
     address: 'https://mesto.nomoreparties.co/v1/cohort36',
-    token: '55b469c4-8b27-481f-8422-268744bde49b'
+    headers: {
+        authorization: '55b469c4-8b27-481f-8422-268744bde49b',
+        "Content-Type": "application/json",
+    }
 })
 
 //переменная текущего пользователя

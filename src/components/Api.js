@@ -8,12 +8,11 @@
 //удалить лайк карточки (DELETE)
 
 export class Api {
-    constructor({baseUrl, address, token}) {
-        this._baseUrl = baseUrl;
+    constructor({address, token, headers}) {
         this._address = address;
         this._token = token;
-    }
-
+        this._headers = headers
+     }
 //обработчик ответа
     _getResponse(res) {
         if (res.ok) {
@@ -26,10 +25,7 @@ export class Api {
     getUserInfo() {
         return fetch(`${this._address}/users/me`, {
             method: "GET",
-            headers: {
-                authorization: this._token,
-                "Content-Type": "application/json",
-            },
+            headers: this._headers,
         }).then(this._getResponse);
     }
 
@@ -38,10 +34,7 @@ export class Api {
     getInitialCards() {
         return fetch(`${this._address}/cards`, {
             method: 'GET',
-            headers: {
-                authorization: this._token,
-                'Content-Type': 'application/json'
-            }
+            headers: this._headers,
         })
             .then(this._getResponse)
     }
@@ -50,10 +43,7 @@ export class Api {
     postNewCard(item) {
         return fetch(`${this._address}/cards`, {
             method: "POST",
-            headers: {
-                authorization: this._token,
-                "Content-Type": "application/json",
-            },
+            headers: this._headers,
             body: JSON.stringify({
                 name: item.name,
                 link: item.link,
@@ -65,10 +55,7 @@ export class Api {
     patchNewAvatar(item) {
         return fetch(`${this._address}/users/me/avatar`, {
             method: "PATCH",
-            headers: {
-                authorization: this._token,
-                "Content-Type": "application/json",
-            },
+            headers: this._headers,
             body: JSON.stringify({
                 avatar: item.avatar,
             }),
@@ -79,10 +66,7 @@ export class Api {
     patchUserProfile(item) {
         return fetch(`${this._address}/users/me`, {
             method: "PATCH",
-            headers: {
-                authorization: this._token,
-                "Content-Type": "application/json",
-            },
+            headers: this._headers,
             body: JSON.stringify({name: item.userName, about: item.userJob}),
         }).then(this._getResponse);
     }
@@ -91,10 +75,7 @@ export class Api {
     likeCard(id) {
         return fetch(`${this._address}/cards/likes/${id}`, {
             method: "PUT",
-            headers: {
-                authorization: this._token,
-                "Content-Type": "application/json",
-            },
+            headers: this._headers,
         }).then(this._getResponse);
     }
 
@@ -102,21 +83,15 @@ export class Api {
     unlikeCard(id) {
         return fetch(`${this._address}/cards/likes/${id}`, {
             method: "DELETE",
-            headers: {
-                authorization: this._token,
-                "Content-Type": "application/json",
-            },
+            headers: this._headers,
         }).then(this._getResponse);
     }
 
     // удаление карточки
     deleteCard(id) {
-        return fetch(`${this._baseUrl}/cards/${id}`, {
+        return fetch(`${this._address}/cards/${id}`, {
             method: "DELETE",
-            headers: {
-                authorization: this._token,
-                "Content-Type": "application/json",
-            },
+            headers: this._headers,
         }).then(this._getResponse);
     }
 }
