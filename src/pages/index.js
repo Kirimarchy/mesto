@@ -1,4 +1,4 @@
- import './index.css';
+import './index.css';
 import {
     initialCards,
     config,
@@ -120,7 +120,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
         userId = profile._id;
         defaultCardList.renderItems(userData); // Рендерим  карточки пользователей
         userInfo.setUserInfo(profile); // грузим данные пользователя
-        userInfo.setUserAvatar(profile);
+        //userInfo.setUserAvatar(profile);
     })
     .catch((err) => {
         console.log(`Error: ${err}`);
@@ -178,7 +178,7 @@ const editAvatar = new PopupWithForm({
         api
             .patchNewAvatar(item)
             .then((result) => {
-                userInfo.setUserAvatar(result);
+                userInfo.setUserInfo(result);
                 editAvatar.close();
             })
             .catch((err) => {
@@ -191,10 +191,6 @@ const editAvatar = new PopupWithForm({
 });
 editAvatar.setEventListeners();
 
-// кнопка сменить аватар
-avatarEditButton.addEventListener("click", () => {
-    editAvatar.open();
-});
 
 //Валидация
 const formValidMesto = new FormValidator(config, formMesto);
@@ -204,6 +200,31 @@ formValidProfile.enableValidation();
 const formValidAvatar = new FormValidator(config, formAvatar);
 formValidAvatar.enableValidation();
 
+
+
+/*const formValidators = {}
+
+// Включение валидации
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector))
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(formElement, config)
+// получаем данные из атрибута `name` у формы
+    const formName = formElement.getAttribute('name')
+
+   // вот тут в объект записываем под именем формы
+    formValidators[formName] = validator;
+   validator.enableValidation();
+  });
+};
+
+enableValidation(config);
+
+formValidators[ profileForm.getAttribute('name') ].resetValidation()
+
+// или можно использовать строку (ведь Вы знаете, какой атрибут `name` у каждой формы)
+formValidators['profile-form'].resetValidation()
+*/ 
 // открытие попапа редактирования профиля
 editProfileBtn.addEventListener('click', () => {
     const data = userInfo.getUserInfo();
@@ -220,6 +241,11 @@ addMestoBtn.addEventListener('click', () => {
     formValidMesto.toggleButtonState();
 });
 
+// кнопка сменить аватар
+avatarEditButton.addEventListener('click', () => {
+    editAvatar.open();
+    formValidAvatar.toggleButtonState();
+});
 
 
 

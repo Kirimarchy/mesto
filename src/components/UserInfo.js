@@ -20,9 +20,7 @@ export class UserInfo {
     setUserInfo(item) {
         this._profileName.textContent = item.name;
         this._profileDescription.textContent = item.about;
-    }
-
-    setUserAvatar(item) {
         this._profileAvatar.src = item.avatar;
+        this._profile = item._id;
     }
 }

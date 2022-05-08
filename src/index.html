@@ -87,13 +87,13 @@
       <div class ="popup popup_avatar">
         <div class ="popup__container popup__container_avatar">
           <button class="popup__close-btn popup__close-btn_avatar" type="button"></button> 
-          <form action = "post" class="popup__form popup__form_avatar" name="form" novalidate>
+          <form class="popup__form popup__form_avatar" name="form" novalidate>
             <h2 class="popup__title">Обновить аватар</h2>
             <label class="popup__field">
-          <input class="popup__input popup__input_avatar" id="avatar" name="avatar" placeholder="Ссылка на картинку" type="url" required>
-          <span class='popup__error' id="avatarInputError"></span>
-          </label>
-          <button class="popup__button popup__button_submit popup__button_disabled" type="submit" name="save">
+              <input type="url" class="popup__input popup__input_avatar" id="avatar" name="avatar" required value="" placeholder="Ссылка на картинку"> 
+              <span class="popup__error" id="avatarError"></span> 
+              </label> 
+          <button class="popup__button popup__button_submit popup__button_disabled" type="submit" value="submit">
             Сохранить
           </button>
           </form>
@@ -120,13 +120,13 @@
           <input type="text" name="name" class="popup__input popup__input_image_name" id="imageInput"
             value="" placeholder="Название" minlength="2" maxlength="30" required
           />
-          <span class='popup__error' id="imageInputError"></span>
+          <span class="popup__error" id="imageInputError"></span>
           </label>
           <label>
           <input type="url" name="link"  class="popup__input popup__input_image_src" id="srcInput"
             required value="" placeholder="Ссылка на картинку"  
           />
-          <span class='popup__error' id="srcInputError"></span>
+          <span class="popup__error" id="srcInputError"></span>
         </label>
           <button class="popup__button popup__button_submit popup__button_disabled" type="submit" value="submit">
             Создать

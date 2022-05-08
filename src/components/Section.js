@@ -19,6 +19,12 @@ export default class Section {
   addItem(element) {
     this._container.append(element);
   }
+
+ /* addItem(item) {
+    const card = this._renderer(item)
+    this._container.prepend(card);
+  }
+ */
 //Добавляем карточку в наачало массива 
   prependItem(elements) {
     this._container.prepend(elements);
