@@ -36,7 +36,7 @@ export class PopupWithForm extends Popup {
         this._popupForm.addEventListener('submit', (e) => {
             e.preventDefault();
             this._handleSubmit(this._getInputVaiues());// добавим вызов функции _handleSubmit
-            this.close();                          // передадим ей объект — результат работы _getInputValues
+            this._popupForm.reset();           // передадим ей объект — результат работы _getInputValues
         });
     }
 
@@ -44,7 +44,7 @@ export class PopupWithForm extends Popup {
     isLoading(isLoading, buttonText='Сохранить') {
     if (isLoading) {
       this._button.textContent = "Сохранение...";
-    } else if (this._popupSelector === '.popup__form') {
+    } else if (this._popupSelector === '.popup') {
       this._popupSave = "Создать";
     } else {
       this._button.textContent = buttonText;

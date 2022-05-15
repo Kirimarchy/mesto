@@ -89,7 +89,7 @@ const generateCard = (item) => {
 //функция добавления новой секции
 const defaultCardList = new Section(
     {
-        items: initialCards,
+        items: initialCards, //по умолчанию
         renderer: generateCard,
     },
     elements
@@ -120,12 +120,10 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
             defaultCardList.addItem(item) // Рендерим  карточки пользователей
         });
         userInfo.setUserInfo(profile); // грузим данные пользователя
-        //userInfo.setUserAvatar(profile);
     })
     .catch((err) => {
         // выводим карточки по умолчанию
         defaultCardList.renderItems();
-
         console.log(`Error: ${err}`);
     });
 
@@ -241,13 +239,12 @@ editProfileBtn.addEventListener('click', () => {
 addMestoBtn.addEventListener('click', () => {
     formValidMesto.resetValidation();
     addMesto.open();
-    formValidMesto.toggleButtonState();
 });
 
 // кнопка сменить аватар
 avatarEditButton.addEventListener('click', () => {
     editAvatar.open();
-    formValidAvatar.toggleButtonState();
+    formValidAvatar.resetValidation();
 });
 
 
