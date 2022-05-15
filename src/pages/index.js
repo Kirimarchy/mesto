@@ -89,11 +89,9 @@ const generateCard = (item) => {
 //функция добавления новой секции
 const defaultCardList = new Section(
     {
-        renderer: (item) => {
-            defaultCardList.addItem(generateCard(item));
-        },
+        items: initialCards,
+        renderer: generateCard,
     },
-    initialCards,
     elements
 );
 
@@ -118,11 +116,16 @@ let userId;
 Promise.all([api.getInitialCards(), api.getUserInfo()])
     .then(([userData, profile]) => {
         userId = profile._id;
-        defaultCardList.renderItems(userData); // Рендерим  карточки пользователей
+        userData.forEach((item) => {
+            defaultCardList.addItem(item) // Рендерим  карточки пользователей
+        });
         userInfo.setUserInfo(profile); // грузим данные пользователя
         //userInfo.setUserAvatar(profile);
     })
     .catch((err) => {
+        // выводим карточки по умолчанию
+        defaultCardList.renderItems();
+
         console.log(`Error: ${err}`);
     });
 
@@ -136,7 +139,7 @@ const addMesto = new PopupWithForm({
         api
             .postNewCard(item)
             .then((result) => {
-                defaultCardList.prependItem(generateCard(result)); // добавляем в начало - метод prependItem в Section.js
+                defaultCardList.prependItem(result); // добавляем в начало - метод prependItem в Section.js
                 addMesto.close();
             })
             .catch((err) => {

@@ -10,7 +10,7 @@ class Card {
         this._alt = data.name; // альт карточки
         this._likes = data.likes;// лайки карточек, если их нет при загрузке применять правую часть, пустой массив
         this._cardId = data._id;// id карточки
-        this._ownerId = data.owner._id; // id владельца юзера добавившего эту карточку
+        this._ownerId = data.owner?._id; // id владельца юзера добавившего эту карточку
         this._userId = userId;  // текущий пользватель
         this._elementSelector = elementSelector; // // записали селектор в приватное поле
         this._handleCardClick = handleCardClick; // открыть карточку, попап
@@ -77,12 +77,16 @@ class Card {
 
     // проверяем есть ли лайк юзера
     ifLikedByUser() {
-        return this._likes.some((Like) => Like._id === this._currentUserId);
+        return this._likes?.some((Like) => Like._id === this._currentUserId);
     }
 
     // обновляем лайки карточек
     updateLikes() {
-        this._likeCounter.textContent = this._likes.length || '';
+        if (!this._likes) {
+            this._likeButton.remove();
+        }
+
+        this._likeCounter.textContent = this._likes?.length || '';
         // проверяем есть ли лайк пользователя
         if (this.ifLikedByUser()) {
             this._likeButton.classList.add('is_user_like');
@@ -102,9 +106,9 @@ class Card {
         this._handleCardClick(this._name, this._link);
     }
 
-    // проверям моя ли карточка и если нет, то убираем кнопку удаления
+    // проверям моя ли карточка и есть ли владелец. Если нет, то убираем кнопку удаления
     _handleCardDeleteVisible() {
-        if (this._ownerId !== this._currentUserId) {
+        if (this._ownerId !== this._currentUserId || !this._ownerId) {
             this._deleteButton.remove();
         }
     }
