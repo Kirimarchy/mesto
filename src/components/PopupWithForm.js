@@ -25,8 +25,9 @@ export class PopupWithForm extends Popup {
             this._formValues[input.name] = input.value;
         });
         // возвращаем объект значений
-        return this._formValues;
+        return this._formValues; 
     }
+    
 
 //Перезаписывает родительский метод setEventListeners.
 // Метод setEventListeners класса PopupWithForm должен 
@@ -36,7 +37,7 @@ export class PopupWithForm extends Popup {
         this._popupForm.addEventListener('submit', (e) => {
             e.preventDefault();
             this._handleSubmit(this._getInputVaiues());// добавим вызов функции _handleSubmit
-            this._popupForm.reset();           // передадим ей объект — результат работы _getInputValues
+                      // передадим ей объект — результат работы _getInputValues
         });
     }
 
@@ -49,5 +50,10 @@ export class PopupWithForm extends Popup {
     } else {
       this._button.textContent = buttonText;
     }
+   }
+
+   close() {
+    this._popupForm.reset();
+    super.close();
    }
 }
